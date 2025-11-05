@@ -1,0 +1,1136 @@
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #1e40af;
+    --text-color: #1f2937;
+    --light-text: #6b7280;
+    --background: #ffffff;
+    --light-background: #f3f4f6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Navbar Styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin-right: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--primary-color);
+}
+
+/* Hero Section */
+.hero {
+    padding: 120px 0 60px;
+    background: var(--light-background);
+    opacity: 1;
+    transform: none;
+}
+
+.hero-content {
+    text-align: center;
+}
+
+.hero-avatar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.hero-avatar img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #ffffff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Desktop yerleşimi: avatar ve metin yan yana */
+@media (min-width: 992px) {
+    .hero-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5rem;
+        text-align: left;
+        flex-direction: row-reverse; /* avatar sağda, metin solda */
+    }
+
+    /* Başlığı iki satır yap: "Merhaba, ben" üstte, isim altta */
+    .hero h1 {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+
+    .hero-text {
+        max-width: 680px;
+        margin-left: 0;
+    }
+
+    .hero-avatar {
+        margin-bottom: 0; /* yan yana düzende dikey boşluğu kaldır */
+    }
+
+    .hero-avatar img {
+        width: 280px;
+        height: 280px;
+    }
+
+    /* CTA butonlarını masaüstünde sola hizala */
+    .hero-text .cta-buttons {
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: row; /* iletisim ve CV yan yana */
+        margin: 0;
+        max-width: none;
+        width: auto;
+    }
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.highlight {
+    color: var(--primary-color);
+}
+
+.exclamation {
+    color: var(--text-color);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--light-text);
+    margin-bottom: 2rem;
+}
+
+/* Buttons */
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.btn {
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn i {
+    font-size: 1.1rem;
+}
+
+.btn.primary {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn.secondary {
+    background: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    color: white;
+}
+
+.btn.secondary:hover {
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Sections */
+section {
+    padding: 100px 0 60px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+section h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* About Section */
+.about {
+    background: var(--background);
+}
+
+.about-content {
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    line-height: 2;
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    text-align: justify;
+}
+
+/* Education Section */
+.education {
+    background: var(--light-background);
+}
+
+.education-content {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.education-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    transition: transform 0.3s;
+}
+
+.education-card:hover {
+    transform: translateY(-5px);
+}
+
+.education-content-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.education-logo {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.education-info {
+    flex: 1;
+}
+
+.education-info h3 {
+    font-size: 1.3rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary-color);
+    display: inline-block;
+}
+
+.education-details {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.education-program {
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+.education-date {
+    font-size: 1rem;
+    color: var(--light-text);
+}
+
+.education-gpa {
+    font-size: 1rem;
+    color: var(--light-text);
+    padding-left: 1rem;
+    border-left: 2px solid var(--light-background);
+}
+
+/* Experience Section - reuse projects styles */
+.experience {
+    background: var(--background);
+}
+
+.experience .projects-grid {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Tweak Intertech visuals inside experience project card */
+/* Experience hero row (logo left, date right) */
+.experience .experience-hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    margin-bottom: 0.2rem;
+    position: relative;
+}
+
+.experience .experience-hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    right: 15px;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+/* Desktop only - blue line with more space */
+@media (min-width: 769px) {
+    .experience .experience-hero::after {
+        bottom: -8px;
+    }
+}
+
+.experience .experience-hero-logo {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
+}
+
+.experience .experience-hero-date {
+    font-size: 0.95rem;
+    color: var(--light-text);
+}
+
+/* Mobile responsive for experience hero */
+@media (max-width: 768px) {
+    .experience .experience-hero {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+}
+
+/* Skills Section */
+.skills {
+    background: var(--light-background);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.skill-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+}
+
+.skill-card i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* Projects Section */
+.projects {
+    background: var(--background);
+}
+
+/* Yatay kaydırılabilir proje alanı */
+.projects-carousel {
+    position: relative;
+    overflow: visible; /* oklar dışarı taşabilsin */
+}
+
+.projects-track {
+    display: grid;
+    grid-auto-flow: column;
+    /* İki kart yan yana görünsün, diğerleri kaydırılsın */
+    grid-auto-columns: clamp(320px, calc((100% - 1.5rem) / 2), 520px);
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5rem;
+}
+
+.projects-track .project-card {
+    scroll-snap-align: start;
+}
+
+/* Ok butonları */
+.projects-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.projects-arrow.left { left: -56px; }
+.projects-arrow.right { right: -56px; }
+
+.projects-arrow:hover { background: rgba(0,0,0,0.75); }
+
+.project-card {
+    background: #f8f9fa;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.project-card .project-image {
+    height: 250px;
+    object-fit: contain; /* yatay taşmayı engelle, tamamını göster */
+    border-bottom: 1px solid var(--light-background);
+    background: var(--light-background);
+    padding: 0.5rem;
+}
+
+/* Görsel Lightbox Modal */
+.image-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 2rem;
+}
+
+.image-modal.open {
+    display: flex;
+}
+
+.image-modal-content {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.image-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-modal-close:hover {
+    background: rgba(255,255,255,0.25);
+}
+
+.project-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 1.5rem 0.5rem;
+}
+
+.project-card .project-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+/* İkon tabanlı logo (Material Symbols) */
+.project-logo-icon {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    line-height: 1;
+    color: var(--primary-color);
+    flex-shrink: 0;
+    align-self: center;
+}
+
+/* Logo ve başlığı aynı satıra sabitle (Tweet Battle için de) */
+.project-header .project-logo-icon,
+.project-header .project-logo {
+    flex: 0 0 40px; /* sabit genişlik, taşma yok */
+}
+
+.project-header h3 {
+    flex: 1 1 auto; /* kalan alanı kullansın */
+    margin: 0;
+}
+
+/* Material Symbols ikonu proje başlığında dikey ortala */
+.project-header .material-symbols-outlined {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    vertical-align: middle;
+    height: 40px;
+    font-size: 32px;
+}
+
+.project-card h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.project-card p {
+    padding: 0 1.5rem 1.5rem;
+    color: var(--light-text);
+}
+
+.project-links {
+    padding: 0 1.5rem 1.5rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.project-links .btn.small {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    background: transparent;
+    border: none;
+    color: #6d28d9;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.project-links .btn.small i {
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.project-links .btn.small:hover i {
+    transform: translate(2px, -2px);
+}
+
+.project-links .btn.small:hover {
+    background: transparent;
+    color: #6d28d9;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0 1.5rem 1rem;
+}
+
+.tech-item {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* Contact Section */
+.contact {
+    background: var(--light-background);
+}
+
+.contact-content {
+    text-align: center;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.social-link {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    transition: color 0.3s;
+}
+
+.social-link:hover {
+    color: var(--primary-color);
+}
+
+/* Footer */
+footer {
+    background: var(--background);
+    padding: 2rem 0;
+    text-align: center;
+}
+
+/* Terminal Styles */
+.terminal-wrapper {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.terminal {
+    width: 600px;
+    height: 400px;
+    background: #1a1a1a;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: none;
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    transform: scale(0.8);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.terminal.maximized {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    bottom: auto;
+    right: auto;
+    z-index: 9999;
+}
+
+.terminal.active {
+    display: block;
+    transform: scale(1);
+    opacity: 1;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateY(20px) scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(20px) scale(0.8);
+        opacity: 0;
+    }
+}
+
+.terminal.active {
+    display: block;
+    animation: slideIn 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.terminal.closing {
+    animation: slideOut 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.terminal-header {
+    background: #2d2d2d;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+}
+
+.terminal-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.terminal-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.terminal-button:hover {
+    transform: scale(1.2);
+}
+
+.terminal-button.close {
+    background: #ff5f56;
+}
+
+.terminal-button.minimize {
+    background: #ffbd2e;
+}
+
+.terminal-button.maximize {
+    background: #27c93f;
+}
+
+.terminal-title {
+    color: #999;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
+.terminal.maximized .terminal-title {
+    max-width: none;
+    margin: 0 20px;
+}
+
+.terminal.maximized .terminal-header {
+    padding: 15px 20px;
+}
+
+.terminal-content {
+    padding: 5px 15px;
+    height: calc(100% - 40px);
+    overflow-y: auto;
+    font-family: 'Consolas', monospace;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.terminal-output {
+    flex: 1;
+    margin-bottom: 15px;
+    white-space: pre-wrap;
+    overflow-y: auto;
+}
+
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+    position: sticky;
+    bottom: 0;
+    background: #1a1a1a;
+    padding: 5px 0;
+}
+
+.terminal-prompt {
+    color: #27c93f;
+}
+
+.terminal-input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-family: 'Consolas', monospace;
+    font-size: 14px;
+    flex: 1;
+    outline: none;
+}
+
+.terminal-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #000000;
+    color: #27c93f;
+    border: 1px solid #000000;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.terminal-toggle:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    /* Mobilde kart genişliğini küçült */
+    .projects-track {
+        grid-auto-columns: 300px;
+        gap: 1rem;
+    }
+    .terminal {
+        width: calc(100vw - 40px);
+        height: 60vh;
+    }
+
+    .about-content {
+        padding: 1.5rem;
+        margin: 0;
+        width: 100%;
+        max-width: 800px;
+    }
+
+    .about-content p {
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+
+    .project-tech {
+        padding: 0 1rem 1rem;
+    }
+
+    .education-content-wrapper {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .education-logo {
+        width: 80px;
+        height: 80px;
+    }
+
+    .education-details {
+        flex-direction: row;
+        gap: 1rem;
+        justify-content: center;
+    }
+
+    .education-gpa {
+        padding-left: 1rem;
+        border-left: 2px solid var(--light-background);
+    }
+    /* Mobilde okları içeri al */
+    .projects-arrow.left { left: 8px; }
+    .projects-arrow.right { right: 8px; }
+}
+
+/* Nav Right */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Mobile Controls */
+.mobile-controls {
+    display: none;
+    align-items: center;
+    gap: 1rem;
+}
+
+.mobile-lang {
+    display: none;
+}
+
+/* Language Switch Button */
+.lang-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.lang-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.current-lang {
+    font-weight: 500;
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 0.5rem;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    transition: all 0.3s;
+}
+
+.hamburger-menu:hover {
+    transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .mobile-controls {
+        display: flex;
+    }
+
+    .desktop-lang {
+        display: none;
+    }
+
+    .mobile-lang {
+        display: flex;
+    }
+
+    .hamburger-menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-container {
+        position: fixed;
+        top: 0;
+        right: -250px;
+        width: 250px;
+        height: 100vh;
+        background: white;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        z-index: 999;
+        padding-top: 70px;
+        overflow-y: hidden;
+    }
+
+    .nav-container.active {
+        right: 0;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        padding: 1rem 0;
+    }
+
+    .nav-links li {
+        width: 100%;
+        opacity: 0;
+        transform: translateX(20px);
+        transition: all 0.3s ease;
+    }
+
+    .nav-container.active .nav-links li {
+        opacity: 1;
+        transform: translateX(0);
+        transition-delay: calc(0.05s * var(--i));
+    }
+
+    .nav-links a {
+        display: block;
+        font-size: 1.1rem;
+        padding: 0.8rem 1.5rem;
+        text-align: left;
+        border-left: 3px solid transparent;
+    }
+
+    .nav-links a:hover {
+        background: var(--light-background);
+        border-left: 3px solid var(--primary-color);
+    }
+
+    .nav-links a.active {
+        background: var(--light-background);
+        border-left: 3px solid var(--primary-color);
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .hero h1 span:first-child {
+        font-size: 1.8rem;
+    }
+
+    .hero h1 .highlight {
+        font-size: 2.2rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+    }
+
+    .hero-avatar img {
+        width: 180px;
+        height: 180px;
+    }
+
+    section h2 {
+        font-size: 2rem;
+    }
+
+    .mobile-controls {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        z-index: 1000;
+    }
+
+    .project-card .project-image {
+        height: 200px;
+        width: 100%;
+        object-fit: contain;
+        background: var(--light-background);
+        padding: 1rem;
+    }
+
+    .project-header {
+        padding: 1rem 1rem 0.5rem;
+    }
+
+    .project-card p {
+        padding: 0 1rem 1rem;
+    }
+
+    .project-links {
+        padding: 0 1rem 1rem;
+    }
+}
+
+/* Daha küçük mobil ekranlar için ek düzenlemeler */
+@media (max-width: 480px) {
+    .nav-container {
+        width: 250px;
+    }
+
+    .nav-links a {
+        font-size: 1.1rem;
+        padding: 0.8rem;
+    }
+} 

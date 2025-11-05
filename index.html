@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-tr="İbrahim Mert'in Portfolyosu" data-en="İbrahim Mert's Portfolio">İbrahim Mert'in Portfolyosu</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo" data-tr="Portfolyo" data-en="Portfolio">Portfolyo</div>
+            <div class="nav-container">
+                <ul class="nav-links">
+                    <li style="--i:0"><a href="#basa-don" data-tr="Başa Dön" data-en="Back to Top">Başa Dön</a></li>
+                    <li style="--i:1"><a href="#hakkimda" data-tr="Hakkımda" data-en="About">Hakkımda</a></li>
+                    <li style="--i:2"><a href="#egitim" data-tr="Eğitim" data-en="Education">Eğitim</a></li>
+                    <li style="--i:3"><a href="#deneyim" data-tr="Deneyim" data-en="Experience">Deneyim</a></li>
+                    <li style="--i:4"><a href="#yetenekler" data-tr="Yetenekler" data-en="Skills">Yetenekler</a></li>
+                    <li style="--i:5"><a href="#projeler" data-tr="Projeler" data-en="Projects">Projeler</a></li>
+                    <li style="--i:6"><a href="#iletisim" data-tr="İletişim" data-en="Contact">İletişim</a></li>
+                </ul>
+                <button onclick="toggleLanguage()" class="lang-btn desktop-lang">
+                    <span class="current-lang">TR</span>
+                    <i class="fas fa-globe"></i>
+                </button>
+            </div>
+            <div class="mobile-controls">
+                <button onclick="toggleLanguage()" class="lang-btn mobile-lang">
+                    <span class="current-lang">TR</span>
+                    <i class="fas fa-globe"></i>
+                </button>
+                <button class="hamburger-menu" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section id="basa-don" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-avatar">
+                    <img src="pp.jpeg" alt="Profil Fotoğrafı" />
+                </div>
+                <div class="hero-text">
+                    <h1><span data-tr="Merhaba, ben " data-en="Hello, I'm ">Merhaba, ben </span><span class="highlight">İbrahim Mert Sürme</span></h1>
+                    <p data-tr="Bilgisayar Mühendisliği 3. Sınıf Öğrencisi" data-en="Computer Engineering 3rd Year Student">Bilgisayar Mühendisliği 3. Sınıf Öğrencisi</p>
+                    <div class="cta-buttons">
+                        <a href="#iletisim" class="btn primary" data-tr="İletişime Geç" data-en="Contact Me">
+                            <i class="fas fa-envelope"></i>
+                            <span data-tr="İletişime Geç" data-en="Contact Me">İletişime Geç</span>
+                        </a>
+                        <a href="cv.pdf" download="ibrahim_mert_surme_cv.pdf" class="btn primary" data-tr="CV" data-en="CV">
+                            <i class="fas fa-file-download"></i>
+                            <span data-tr="CV" data-en="CV">CV</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="hakkimda" class="about">
+        <div class="container">
+            <h2 data-tr="Hakkımda" data-en="About Me">Hakkımda</h2>
+            <div class="about-content">
+                <p data-tr="22 yaşındayım ve İstanbul Teknik Üniversitesi'nde Bilgisayar Mühendisliği 3. sınıf öğrencisiyim. Genellikle web geliştirme, veritabanları ve yapay zeka ile ilgileniyorum ve bu alanda projeler üretmeye çalışıyorum. Bana ulaşmak istersen çekinmeden iletişime geçebilirsin!" 
+                   data-en="I am 22 years old and a 3rd-year Computer Engineering student at Istanbul Technical University. I am mainly interested in web development, databases, and artificial intelligence, and I try to develop projects in these areas. Feel free to reach out if you'd like to get in touch!">
+                   22 yaşındayım ve İstanbul Teknik Üniversitesi'nde Bilgisayar Mühendisliği 3. sınıf öğrencisiyim. Genellikle web geliştirme, veritabanları ve yapay zeka ile ilgileniyorum ve bu alanda projeler üretmeye çalışıyorum. Bana ulaşmak istersen çekinmeden iletişime geçebilirsin!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="egitim" class="education">
+        <div class="container">
+            <h2 data-tr="Eğitim" data-en="Education">Eğitim</h2>
+            <div class="education-content">
+                <div class="education-card">
+                    <div class="education-content-wrapper">
+                        <img src="itu-logo.png" alt="İTÜ Logo" class="education-logo">
+                        <div class="education-info">
+                            <h3 data-tr="İstanbul Teknik Üniversitesi" data-en="Istanbul Technical University">İstanbul Teknik Üniversitesi</h3>
+                            <div class="education-details">
+                                <p class="education-program" data-tr="Bilgisayar Mühendisliği" data-en="Computer Engineering">Bilgisayar Mühendisliği</p>
+                                <p class="education-gpa" data-tr="GNO: 3.31/4.00" data-en="GPA: 3.31/4.00">GNO: 3.31/4.00</p>
+                            </div>
+                            <p class="education-date" data-tr="2022 - Devam Ediyor" data-en="2022 - Present">2022 - Devam Ediyor</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="deneyim" class="experience">
+        <div class="container">
+            <h2 data-tr="Deneyim" data-en="Experience">Deneyim</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="experience-hero">
+                        <a href="https://www.intertech.com.tr/" target="_blank" rel="noopener noreferrer">
+                            <img src="intertech-logo.svg" alt="Intertech Logo" class="experience-hero-logo">
+                        </a>
+                        <span class="experience-hero-date" data-tr="Ağustos – Eylül 2025" data-en="Aug – Sep 2025">Ağustos – Eylül 2025</span>
+                    </div>
+                    <div class="project-header">
+                        <h3 data-tr="Yazılım Mühendisliği Stajyeri — Intertech Bilgi Teknolojileri" data-en="Software Engineer Intern — Intertech Information Technologies">Yazılım Mühendisliği Stajyeri — Intertech Bilgi Teknolojileri</h3>
+                    </div>
+                    <p data-tr="InterChat adlı, LLM odaklı akıllı bankacılık asistanının geliştirilmesinde görev aldım. React + Vite ile bileşen tabanlı, responsive ve güvenli arayüzler geliştirdim; FastAPI tarafında JWT kimlik doğrulama ve API uçları üzerinde çalıştım. LangChain + MCP ile araç orkestrasyonu, prompt/parametre yönetimi, çıktı güvenliği ve hassas veri maskeleme üzerine odaklandım." data-en="Contributed to InterChat, an LLM‑centric smart banking assistant. Built component‑based, responsive, and secure UIs with React + Vite; worked on FastAPI with JWT auth and API endpoints. Focused on LangChain + MCP for tool orchestration, prompt/parameter management, output safety, and sensitive data masking.">InterChat adlı, LLM odaklı akıllı bankacılık asistanının geliştirilmesinde görev aldım. React + Vite ile bileşen tabanlı, responsive ve güvenli arayüzler geliştirdim; FastAPI tarafında JWT kimlik doğrulama ve API uçları üzerinde çalıştım. LangChain + MCP ile araç orkestrasyonu, prompt/parametre yönetimi, çıktı güvenliği ve hassas veri maskeleme üzerine odaklandım.</p>
+                    <div class="project-tech">
+                        <span class="tech-item">Python (FastAPI)</span>
+                        <span class="tech-item">React</span>
+                        <span class="tech-item">SQLite</span>
+                        <span class="tech-item">LangChain</span>
+                        <span class="tech-item">LangGraph</span>
+                        <span class="tech-item">Docker</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/imSurme/interchat-banking-assistant" target="_blank" class="btn small">GitHub <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="yetenekler" class="skills">
+        <div class="container">
+            <h2 data-tr="Yeteneklerim" data-en="My Skills">Yeteneklerim</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fas fa-code"></i>
+                    <h3 data-tr="Programlama" data-en="Programming">Programlama</h3>
+                    <p>C, C++, Python</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-globe"></i>
+                    <h3 data-tr="Web Geliştirme" data-en="Web Development">Web Geliştirme</h3>
+                    <p>HTML, CSS, JavaScript</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-database"></i>
+                    <h3 data-tr="Veritabanı" data-en="Database">Veritabanı</h3>
+                    <p>MySQL, MongoDB</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-microchip"></i>
+                    <h3 data-tr="Donanım" data-en="Hardware">Donanım</h3>
+                    <p>Verilog, Assembly</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projeler" class="projects">
+        <div class="container">
+            <h2 data-tr="Projelerim" data-en="My Projects">Projelerim</h2>
+            <div class="projects-carousel">
+                <button class="projects-arrow left" aria-label="Geri">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="projects-track" role="region" aria-label="Projeler kaydırılabilir liste">
+                    <div class="project-card">
+                    <img src="ss1.png" alt="YemekMetre Ekran Görüntüsü" class="project-image">
+                    <div class="project-header">
+                        <img src="yemekmetre-logo.svg" alt="YemekMetre Logo" class="project-logo">
+                        <h3 data-tr="YemekMetre - İTÜ Yemek Takip Sistemi" data-en="YemekMetre - ITU Food Tracking System">YemekMetre - İTÜ Yemek Takip Sistemi</h3>
+                    </div>
+                    <p data-tr="İTÜ öğrencileri için geliştirilmiş, yemek menüsü takip ve değerlendirme platformu." 
+                       data-en="A food menu tracking and rating platform developed for ITU students.">İTÜ öğrencileri için geliştirilmiş, yemek menüsü takip ve değerlendirme platformu.</p>
+                    <div class="project-tech">
+                        <span class="tech-item">HTML</span>
+                        <span class="tech-item">CSS</span>
+                        <span class="tech-item">JavaScript</span>
+                        <span class="tech-item">Python (Flask)</span>
+                        <span class="tech-item">Supabase</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://ituyemekmetre.com" target="_blank" class="btn small">Demo <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                    </div>
+                    <div class="project-card">
+                    <img src="ss2.png" alt="Restoran Yönetim Sistemi Ekran Görüntüsü" class="project-image">
+                    <div class="project-header">
+                        <img src="logo.png" alt="Restoran Yönetim Sistemi Logo" class="project-logo">
+                        <h3 data-tr="Restoran Yönetim Sistemi" data-en="Restaurant Management System">Restoran Yönetim Sistemi</h3>
+                    </div>
+                    <p data-tr="Restoranlar için yönetim ve sipariş takibi yapabilecekleri bir platform." 
+                       data-en="A management and order tracking platform for restaurants.">Restoranlar için yönetim ve sipariş takibi yapabilecekleri bir platform.</p>
+                    <div class="project-tech">
+                        <span class="tech-item">HTML</span>
+                        <span class="tech-item">CSS</span>
+                        <span class="tech-item">JavaScript</span>
+                        <span class="tech-item">Python (Flask)</span>
+                        <span class="tech-item">MySQL</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/imSurme/FDManagementSystem" target="_blank" class="btn small">GitHub <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="ss4.png" alt="InterChat Proje Görseli" class="project-image">
+                        <div class="project-header">
+                            <img src="interchat-logo.jpg" alt="InterChat Logo" class="project-logo">
+                            <h3 data-tr="InterChat - Akıllı Bankacılık Asistanı" data-en="InterChat - Smart Banking Assistant">InterChat - Akıllı Bankacılık Asistanı</h3>
+                        </div>
+                        <p data-tr="Yapay zeka destekli, güvenli bankacılık asistanı. Hesap yönetimi, transfer, döviz/faiz, yatırım ve daha fazlası." data-en="AI‑powered, secure banking assistant. Accounts, transfers, FX/interest, investments and more.">Yapay zeka destekli, güvenli bankacılık asistanı. Hesap yönetimi, transfer, döviz/faiz, yatırım ve daha fazlası.</p>
+                        <div class="project-tech">
+                            <span class="tech-item">FastAPI</span>
+                            <span class="tech-item">React</span>
+                            <span class="tech-item">SQLite</span>
+                            <span class="tech-item">LangChain</span>
+                            <span class="tech-item">LangGraph</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/imSurme/interchat-banking-assistant" target="_blank" class="btn small">GitHub <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="ss3.png" alt="Tweet Battle Oyun Görseli" class="project-image">
+                        <div class="project-header">
+                            <span class="project-logo-icon material-symbols-outlined" aria-hidden="true">swords</span>
+                            <h3 data-tr="Tweet Battle" data-en="Tweet Battle">Tweet Battle</h3>
+                        </div>
+                        <p data-tr="Tweet etkileşimini tahmin etme oyunu. Zorluk seviyeleri, seri bonusu, TR/EN ve yüksek skor." data-en="Predict tweet engagement. Difficulty levels, streak bonus, TR/EN and high score.">Tweet etkileşimini tahmin etme oyunu. Zorluk seviyeleri, seri bonusu, TR/EN ve yüksek skor.</p>
+                        <div class="project-tech">
+                            <span class="tech-item">HTML</span>
+                            <span class="tech-item">CSS</span>
+                            <span class="tech-item">JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://imsurme.github.io/tweetBattle/" target="_blank" class="btn small">Demo <i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://github.com/kullanici-adi/tweetBattle" target="_blank" class="btn small">GitHub <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <button class="projects-arrow right" aria-label="İleri">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Görsel Lightbox Modal -->
+    <div class="image-modal" aria-hidden="true" role="dialog" aria-label="Görsel Önizleme">
+        <button class="image-modal-close" aria-label="Kapat">
+            <i class="fas fa-times"></i>
+        </button>
+        <img src="" alt="Büyük Görsel" class="image-modal-content">
+    </div>
+
+    <section id="iletisim" class="contact">
+        <div class="container">
+            <h2 data-tr="İletişim" data-en="Contact">İletişim</h2>
+            <div class="contact-content">
+                <div class="social-links">
+                    <a href="https://github.com/imSurme" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/imsurme" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/mrtsrm27" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:mrtsrm27@gmail.com" target="_blank" class="social-link"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="terminal-wrapper">
+        <div class="terminal">
+            <div class="terminal-header">
+                <div class="terminal-buttons">
+                    <span class="terminal-button close"></span>
+                    <span class="terminal-button minimize"></span>
+                    <span class="terminal-button maximize"></span>
+                </div>
+                <div class="terminal-title">Terminal</div>
+            </div>
+            <div class="terminal-content">
+                <div class="terminal-output"></div>
+                <div class="terminal-input-line">
+                    <span class="terminal-prompt">guest@portfolio:~$</span>
+                    <input type="text" class="terminal-input" autofocus spellcheck="false">
+                </div>
+            </div>
+        </div>
+        <button class="terminal-toggle">
+            <i class="fas fa-terminal"></i>
+        </button>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p data-tr="&copy; 2025 Tüm Hakları Saklıdır." data-en="&copy; 2025 All Rights Reserved.">&copy; 2025 Tüm Hakları Saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
