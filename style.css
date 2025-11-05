@@ -1231,7 +1231,7 @@ footer {
     /* Navbar kenar boşluklarını küçült, logo en sola, hamburger en sağa yaklaşsın */
     .navbar .container {
         padding-left: 12px;
-        padding-right: 12px;
+        padding-right: 4px;
     }
 
     .logo { margin-left: 0; }
