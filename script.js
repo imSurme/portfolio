@@ -401,8 +401,8 @@ Genellikle web geliştirme, veritabanları ve yapay zeka ile ilgileniyorum ve bu
   - GitHub: <a href="https://github.com/imSurme/interchat-banking-assistant" target="_blank" style="color: #00ff9d; text-decoration: none;" onmouseover="this.style.color='#ff9d00'" onmouseout="this.style.color='#00ff9d'">github.com/imSurme/interchat-banking-assistant</a>`,
             skills: `Yeteneklerim:
 • Programlama: C, C++, Python
-• Web Geliştirme: HTML, CSS, JavaScript
-• Veritabanı: MySQL, MongoDB
+• Web Geliştirme: HTML, CSS, JavaScript, React
+• Veritabanı: MySQL, SQLite
 • Donanım: Verilog, Assembly`,
             projects: `Projelerim:
 1. YemekMetre - İTÜ Yemek Takip Sistemi
@@ -448,8 +448,8 @@ I'm mainly interested in web development, databases, and artificial intelligence
   - GitHub: <a href="https://github.com/imSurme/interchat-banking-assistant" target="_blank" style="color: #00ff9d; text-decoration: none;" onmouseover="this.style.color='#ff9d00'" onmouseout="this.style.color='#00ff9d'">github.com/imSurme/interchat-banking-assistant</a>`,
             skills: `My Skills:
 • Programming: C, C++, Python
-• Web Development: HTML, CSS, JavaScript
-• Database: MySQL, MongoDB
+• Web Development: HTML, CSS, JavaScript, React
+• Database: MySQL, SQLite
 • Hardware: Verilog, Assembly`,
             projects: `My Projects:
 1. YemekMetre - ITU Food Tracking System
