@@ -521,6 +521,12 @@ I'm mainly interested in web development, databases, and artificial intelligence
             }
         }
         
+        // Mobil kontrolleri kaldır
+        const controlsContainer = document.getElementById('snake-controls');
+        if (controlsContainer) {
+            controlsContainer.remove();
+        }
+        
         snakeGame = null;
     }
 
@@ -534,7 +540,7 @@ I'm mainly interested in web development, databases, and artificial intelligence
         terminalOutput.innerHTML = '';
         
         const gameContainer = document.createElement('div');
-        gameContainer.style.cssText = 'text-align: center; margin: 10px 0;';
+        gameContainer.style.cssText = 'text-align: center; margin: 10px 0; position: relative;';
         
         const canvas = document.createElement('canvas');
         canvas.id = 'snake-canvas';
@@ -544,12 +550,96 @@ I'm mainly interested in web development, databases, and artificial intelligence
         
         const instructions = document.createElement('div');
         instructions.style.cssText = 'color: #999; font-size: 12px; margin: 5px 0;';
-        instructions.textContent = currentLang === 'tr' 
-            ? 'Ok tuşları ile oynayın. Oyunu durdurmak için "q" tuşuna basın.'
-            : 'Use arrow keys to play. Press "q" to quit.';
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+        instructions.textContent = isMobile
+            ? (currentLang === 'tr' 
+                ? 'Ok butonları ile oynayın. Oyunu durdurmak için "q" tuşuna basın.'
+                : 'Use arrow buttons to play. Press "q" to quit.')
+            : (currentLang === 'tr' 
+                ? 'Ok tuşları ile oynayın. Oyunu durdurmak için "q" tuşuna basın.'
+                : 'Use arrow keys to play. Press "q" to quit.');
         
         gameContainer.appendChild(instructions);
         gameContainer.appendChild(canvas);
+        
+        // Mobil için ok butonları
+        if (isMobile) {
+            // Canvas'ın gerçek pozisyonunu almak için bir frame bekleyelim
+            setTimeout(() => {
+                const controlsContainer = document.createElement('div');
+                controlsContainer.id = 'snake-controls';
+                // Canvas'ın gerçek pozisyonunu al
+                const canvasRect = canvas.getBoundingClientRect();
+                const containerRect = gameContainer.getBoundingClientRect();
+                const canvasTop = canvasRect.top - containerRect.top;
+                const canvasLeft = canvasRect.left - containerRect.left;
+                
+                controlsContainer.style.cssText = `position: absolute; width: ${canvas.width}px; height: ${canvas.height}px; top: ${canvasTop}px; left: ${canvasLeft}px; pointer-events: none;`;
+            
+                // Yukarı ok - üst kenarda ortada
+                const upBtn = document.createElement('button');
+                upBtn.innerHTML = '↑';
+                upBtn.className = 'snake-control-btn';
+                upBtn.style.cssText = 'position: absolute; top: 5px; left: 50%; transform: translateX(-50%); background: rgba(39, 201, 63, 0.3); border: 2px solid #27c93f; color: #27c93f; border-radius: 4px; font-size: 16px; cursor: pointer; padding: 0; display: flex; align-items: center; justify-content: center; pointer-events: auto; width: 28px; height: 28px;';
+                upBtn.addEventListener('touchstart', (e) => {
+                    e.preventDefault();
+                    const currentDy = nextDy !== 0 ? nextDy : dy;
+                    if (currentDy !== 1) {
+                        nextDx = 0;
+                        nextDy = -1;
+                    }
+                }, { passive: false });
+                
+                // Sol ok - sol kenarda ortada
+                const leftBtn = document.createElement('button');
+                leftBtn.innerHTML = '←';
+                leftBtn.className = 'snake-control-btn';
+                leftBtn.style.cssText = 'position: absolute; left: 5px; top: 50%; transform: translateY(-50%); background: rgba(39, 201, 63, 0.3); border: 2px solid #27c93f; color: #27c93f; border-radius: 4px; font-size: 16px; cursor: pointer; padding: 0; display: flex; align-items: center; justify-content: center; pointer-events: auto; width: 28px; height: 28px;';
+                leftBtn.addEventListener('touchstart', (e) => {
+                    e.preventDefault();
+                    const currentDx = nextDx !== 0 ? nextDx : dx;
+                    if (currentDx !== 1) {
+                        nextDx = -1;
+                        nextDy = 0;
+                    }
+                }, { passive: false });
+                
+                // Aşağı ok - alt kenarda ortada
+                const downBtn = document.createElement('button');
+                downBtn.innerHTML = '↓';
+                downBtn.className = 'snake-control-btn';
+                downBtn.style.cssText = 'position: absolute; bottom: 5px; left: 50%; transform: translateX(-50%); background: rgba(39, 201, 63, 0.3); border: 2px solid #27c93f; color: #27c93f; border-radius: 4px; font-size: 16px; cursor: pointer; padding: 0; display: flex; align-items: center; justify-content: center; pointer-events: auto; width: 28px; height: 28px;';
+                downBtn.addEventListener('touchstart', (e) => {
+                    e.preventDefault();
+                    const currentDy = nextDy !== 0 ? nextDy : dy;
+                    if (currentDy !== -1) {
+                        nextDx = 0;
+                        nextDy = 1;
+                    }
+                }, { passive: false });
+                
+                // Sağ ok - sağ kenarda ortada
+                const rightBtn = document.createElement('button');
+                rightBtn.innerHTML = '→';
+                rightBtn.className = 'snake-control-btn';
+                rightBtn.style.cssText = 'position: absolute; right: 5px; top: 50%; transform: translateY(-50%); background: rgba(39, 201, 63, 0.3); border: 2px solid #27c93f; color: #27c93f; border-radius: 4px; font-size: 16px; cursor: pointer; padding: 0; display: flex; align-items: center; justify-content: center; pointer-events: auto; width: 28px; height: 28px;';
+                rightBtn.addEventListener('touchstart', (e) => {
+                    e.preventDefault();
+                    const currentDx = nextDx !== 0 ? nextDx : dx;
+                    if (currentDx !== -1) {
+                        nextDx = 1;
+                        nextDy = 0;
+                    }
+                }, { passive: false });
+            
+                controlsContainer.appendChild(upBtn);
+                controlsContainer.appendChild(leftBtn);
+                controlsContainer.appendChild(downBtn);
+                controlsContainer.appendChild(rightBtn);
+                gameContainer.appendChild(controlsContainer);
+            }, 0);
+        }
+        
         terminalOutput.appendChild(gameContainer);
         
         // Skor yazısını terminal prompt'unun yanına ekle
