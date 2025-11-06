@@ -580,7 +580,7 @@ I'm mainly interested in web development, databases, and artificial intelligence
                 const upBtn = document.createElement('button');
                 upBtn.innerHTML = '↑';
                 upBtn.className = 'snake-control-btn';
-                upBtn.style.cssText = 'position: absolute; top: 5px; left: 50%; transform: translateX(-50%); background: rgba(39, 201, 63, 0.3); border: 2px solid #27c93f; color: #27c93f; border-radius: 4px; font-size: 16px; cursor: pointer; padding: 0; display: flex; align-items: center; justify-content: center; pointer-events: auto; width: 28px; height: 28px;';
+                upBtn.style.cssText = 'position: absolute; top: 5px; left: 50%; transform: translateX(-50%); background: rgba(39, 201, 63, 0.3); border: 2px solid #27c93f; color: #27c93f; border-radius: 4px; font-size: 16px; cursor: pointer; padding: 0; display: flex; align-items: center; justify-content: center; pointer-events: auto; width: 28px; height: 28px; line-height: 1;';
                 upBtn.addEventListener('touchstart', (e) => {
                     e.preventDefault();
                     const currentDy = nextDy !== 0 ? nextDy : dy;
@@ -594,7 +594,7 @@ I'm mainly interested in web development, databases, and artificial intelligence
                 const leftBtn = document.createElement('button');
                 leftBtn.innerHTML = '←';
                 leftBtn.className = 'snake-control-btn';
-                leftBtn.style.cssText = 'position: absolute; left: 5px; top: 50%; transform: translateY(-50%); background: rgba(39, 201, 63, 0.3); border: 2px solid #27c93f; color: #27c93f; border-radius: 4px; font-size: 16px; cursor: pointer; padding: 0; display: flex; align-items: center; justify-content: center; pointer-events: auto; width: 28px; height: 28px;';
+                leftBtn.style.cssText = 'position: absolute; left: 5px; top: 50%; transform: translateY(-50%); background: rgba(39, 201, 63, 0.3); border: 2px solid #27c93f; color: #27c93f; border-radius: 4px; font-size: 16px; cursor: pointer; padding: 0; display: flex; align-items: center; justify-content: center; pointer-events: auto; width: 28px; height: 28px; line-height: 1;';
                 leftBtn.addEventListener('touchstart', (e) => {
                     e.preventDefault();
                     const currentDx = nextDx !== 0 ? nextDx : dx;
@@ -604,11 +604,11 @@ I'm mainly interested in web development, databases, and artificial intelligence
                     }
                 }, { passive: false });
                 
-                // Aşağı ok - alt kenarda ortada
+                // Aşağı ok - alt kenarda ortada (biraz aşağı kaydırılmış)
                 const downBtn = document.createElement('button');
                 downBtn.innerHTML = '↓';
                 downBtn.className = 'snake-control-btn';
-                downBtn.style.cssText = 'position: absolute; bottom: 5px; left: 50%; transform: translateX(-50%); background: rgba(39, 201, 63, 0.3); border: 2px solid #27c93f; color: #27c93f; border-radius: 4px; font-size: 16px; cursor: pointer; padding: 0; display: flex; align-items: center; justify-content: center; pointer-events: auto; width: 28px; height: 28px;';
+                downBtn.style.cssText = 'position: absolute; bottom: 2px; left: 50%; transform: translateX(-50%); background: rgba(39, 201, 63, 0.3); border: 2px solid #27c93f; color: #27c93f; border-radius: 4px; font-size: 16px; cursor: pointer; padding: 0; display: flex; align-items: center; justify-content: center; pointer-events: auto; width: 28px; height: 28px; line-height: 1;';
                 downBtn.addEventListener('touchstart', (e) => {
                     e.preventDefault();
                     const currentDy = nextDy !== 0 ? nextDy : dy;
@@ -618,11 +618,11 @@ I'm mainly interested in web development, databases, and artificial intelligence
                     }
                 }, { passive: false });
                 
-                // Sağ ok - sağ kenarda ortada
+                // Sağ ok - sağ kenarda ortada (biraz sağa kaydırılmış)
                 const rightBtn = document.createElement('button');
                 rightBtn.innerHTML = '→';
                 rightBtn.className = 'snake-control-btn';
-                rightBtn.style.cssText = 'position: absolute; right: 5px; top: 50%; transform: translateY(-50%); background: rgba(39, 201, 63, 0.3); border: 2px solid #27c93f; color: #27c93f; border-radius: 4px; font-size: 16px; cursor: pointer; padding: 0; display: flex; align-items: center; justify-content: center; pointer-events: auto; width: 28px; height: 28px;';
+                rightBtn.style.cssText = 'position: absolute; right: 2px; top: 50%; transform: translateY(-50%); background: rgba(39, 201, 63, 0.3); border: 2px solid #27c93f; color: #27c93f; border-radius: 4px; font-size: 16px; cursor: pointer; padding: 0; display: flex; align-items: center; justify-content: center; pointer-events: auto; width: 28px; height: 28px; line-height: 1;';
                 rightBtn.addEventListener('touchstart', (e) => {
                     e.preventDefault();
                     const currentDx = nextDx !== 0 ? nextDx : dx;
