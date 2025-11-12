@@ -500,6 +500,7 @@ section h2 {
     align-items: center;
     justify-content: space-between;
     padding: 12px 16px;
+    margin-top: 0.2rem;
     margin-bottom: 0.2rem;
     position: relative;
 }
@@ -516,6 +517,10 @@ section h2 {
 
 /* Desktop only - blue line with more space */
 @media (min-width: 769px) {
+    .experience .experience-hero {
+        margin-top: 0.7rem;
+        margin-bottom: 0.2rem;
+    }
     .experience .experience-hero::after {
         bottom: -8px;
     }
@@ -740,7 +745,7 @@ section h2 {
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: 1.5rem 1.5rem 0.5rem;
+    padding: 0.5rem 1.5rem 0.5rem;
 }
 
 .project-card .project-logo {
@@ -796,7 +801,7 @@ section h2 {
 }
 
 .project-card p {
-    padding: 0 1.5rem 1.5rem;
+    padding: 0.5rem 1.5rem 1.5rem;
     color: var(--light-text);
 }
 
@@ -1441,7 +1446,7 @@ footer {
     }
 
     .project-header {
-        padding: 1rem 1rem 0.5rem;
+        padding: 0 1rem 0.5rem;
     }
 
     .project-card p {
