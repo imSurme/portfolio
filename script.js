@@ -1,7 +1,9 @@
 // Hamburger menü toggle fonksiyonu
 function toggleMenu() {
     const navContainer = document.querySelector('.nav-container');
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
     navContainer.classList.toggle('active');
+    hamburgerMenu.classList.toggle('active');
     
     // Menü açıkken mouse wheel eventini engelle
     if (navContainer.classList.contains('active')) {
@@ -19,8 +21,10 @@ function toggleMenu() {
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
         const navContainer = document.querySelector('.nav-container');
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
         if (navContainer.classList.contains('active')) {
             navContainer.classList.remove('active');
+            hamburgerMenu.classList.remove('active');
             navContainer.removeEventListener('wheel', (e) => {
                 e.preventDefault();
             });
@@ -35,6 +39,7 @@ document.addEventListener('click', (e) => {
     
     if (!navContainer.contains(e.target) && !hamburgerMenu.contains(e.target) && navContainer.classList.contains('active')) {
         navContainer.classList.remove('active');
+        hamburgerMenu.classList.remove('active');
         navContainer.removeEventListener('wheel', (e) => {
             e.preventDefault();
         });
