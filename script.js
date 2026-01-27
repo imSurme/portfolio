@@ -409,12 +409,12 @@ document.addEventListener('DOMContentLoaded', () => {
   cv          - CV'mi indir
   snake       - Snake oyununu başlatır`,
             about: `Merhaba! Ben İbrahim Mert Sürme.
-22 yaşındayım ve İstanbul Teknik Üniversitesi'nde Bilgisayar Mühendisliği 3. sınıf öğrencisiyim.
+22 yaşındayım ve İstanbul Teknik Üniversitesi'nde Bilgisayar Mühendisliği 4. sınıf öğrencisiyim.
 Genellikle web geliştirme, veritabanları ve yapay zeka ile ilgileniyorum ve bu alanlarda projeler geliştiriyorum.`,
             education: `Eğitim:
 • İstanbul Teknik Üniversitesi
   - Bilgisayar Mühendisliği
-  - GNO: 3.31/4.00
+  - GNO: 3.22/4.00
   - 2022 - Devam Ediyor`,
             experience: `Deneyim:
 • Yazılım Mühendisliği Stajyeri — Intertech Bilgi Teknolojileri
@@ -457,12 +457,12 @@ Genellikle web geliştirme, veritabanları ve yapay zeka ile ilgileniyorum ve bu
   cv          - Download my CV
   snake       - Start Snake game`,
             about: `Hello! I'm İbrahim Mert Sürme.
-I'm 22 years old and a 3rd-year Computer Engineering student at Istanbul Technical University.
+I'm 22 years old and a 4th-year Computer Engineering student at Istanbul Technical University.
 I'm mainly interested in web development, databases, and artificial intelligence, and I build projects in these areas.`,
             education: `Education:
 • Istanbul Technical University
   - Computer Engineering
-  - GPA: 3.31/4.00
+  - GPA: 3.22/4.00
   - 2022 - Present`,
             experience: `Experience:
 • Software Engineer Intern — Intertech Information Technologies
