@@ -865,7 +865,7 @@ I'm mainly interested in web development, databases, and artificial intelligence
         },
         cv: () => {
             const link = document.createElement('a');
-            link.href = 'cv.pdf';
+            link.href = 'assets/docs/cv.pdf';
             link.download = 'ibrahim_mert_surme_cv.pdf';
             link.click();
             return terminalTexts[currentLang].cvDownloading;

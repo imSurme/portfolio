@@ -537,6 +537,17 @@ section h2 {
     color: var(--light-text);
 }
 
+/* Deneyim kartında başlık ile üst çizgi arasındaki boşluk */
+.experience .project-header {
+    padding-top: 1rem;
+    padding-bottom: -1rem;
+}
+
+/* Deneyim kartında başlık altı boşluğu üstle eşitle */
+.experience .project-card p {
+    padding-top: 0;
+}
+
 /* Mobile responsive for experience hero */
 @media (max-width: 768px) {
     .experience .experience-hero {
