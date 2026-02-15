@@ -1326,6 +1326,17 @@ footer {
     transform: translateY(-8px) rotate(-45deg);
 }
 
+.logo-v1 {
+    margin-left: 0.15em;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    background: linear-gradient(135deg, #13c8ec 0%, #8b5cf6 50%, #ec138a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     /* Navbar kenar boşluklarını küçült, logo en sola, hamburger en sağa yaklaşsın */
