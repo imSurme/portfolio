@@ -149,6 +149,7 @@ body {
     color: var(--text-color);
     font-weight: 500;
     transition: color 0.3s;
+    white-space: nowrap;
 }
 
 .nav-links a:hover,
@@ -1329,12 +1330,8 @@ footer {
 .logo-v1 {
     margin-left: 0.15em;
     text-decoration: none;
-    color: inherit;
+    color: var(--primary-color);
     cursor: pointer;
-    background: linear-gradient(135deg, #13c8ec 0%, #8b5cf6 50%, #ec138a 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 /* Responsive Design */
