@@ -426,8 +426,8 @@ I'm mainly interested in web development, databases, and artificial intelligence
         const canvas = document.createElement('canvas');
         canvas.id = 'snake-canvas';
         canvas.width = 280;
-        canvas.height = 200;
-        canvas.style.cssText = 'border: 2px solid #27c93f; background: #0a0a0a; display: block; margin: 10px auto; max-width: 100%;';
+        canvas.height = 196; // 14px'lik karelerle tam dolsun (20 x 14)
+        canvas.style.cssText = 'box-sizing: content-box; border: 2px solid #27c93f; border-radius: 4px; background: #0a0a0a; display: block; margin: 10px auto;';
         
         const instructions = document.createElement('div');
         instructions.style.cssText = 'color: #999; font-size: 12px; margin: 5px 0;';
@@ -455,7 +455,7 @@ I'm mainly interested in web development, databases, and artificial intelligence
                 const canvasTop = canvasRect.top - containerRect.top;
                 const canvasLeft = canvasRect.left - containerRect.left;
                 
-                controlsContainer.style.cssText = `position: absolute; width: ${canvas.width}px; height: ${canvas.height}px; top: ${canvasTop}px; left: ${canvasLeft}px; pointer-events: none;`;
+                controlsContainer.style.cssText = `position: absolute; width: ${canvas.width}px; height: ${canvas.height}px; top: ${canvasTop + 2}px; left: ${canvasLeft + 2}px; pointer-events: none;`;
             
                 // Yukarı ok - üst kenarda ortada
                 const upBtn = document.createElement('button');
@@ -557,7 +557,7 @@ I'm mainly interested in web development, databases, and artificial intelligence
 
             // Yemek çiz
             ctx.fillStyle = '#ff5f56';
-            ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize - 2, gridSize - 2);
+            ctx.fillRect(food.x * gridSize + 1, food.y * gridSize + 1, gridSize - 2, gridSize - 2);
 
             // Yılan çiz
             ctx.fillStyle = '#27c93f';
@@ -568,7 +568,7 @@ I'm mainly interested in web development, databases, and artificial intelligence
                 } else {
                     ctx.fillStyle = '#27c93f';
                 }
-                ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize - 2, gridSize - 2);
+                ctx.fillRect(segment.x * gridSize + 1, segment.y * gridSize + 1, gridSize - 2, gridSize - 2);
             });
         }
 
