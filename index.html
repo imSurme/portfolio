@@ -4,35 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-tr="İbrahim Mert'in Portfolyosu" data-en="İbrahim Mert's Portfolio">İbrahim Mert'in Portfolyosu</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <script>
+        // Tema ve animasyon sınıfını sayfa çizilmeden uygula (flash olmasın)
+        (function () {
+            var root = document.documentElement;
+            root.classList.add('js');
+            var stored = null;
+            try { stored = localStorage.getItem('theme-preference'); } catch (e) {}
+            root.setAttribute('data-theme', stored || 'dark');
+        })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <nav class="navbar navbar-modern">
+    <nav class="navbar">
         <div class="container navbar-inner">
-            <span class="logo-link"><span data-tr="Portfolyo" data-en="Portfolio">Portfolyo</span> <a href="https://imsurme.github.io/portfolio-v1/" class="logo-v2" title="Portfolyo V1">v2</a></span>
-            <div class="nav-container">
-                <ul class="nav-links">
-                    <li style="--i:0"><a href="#hakkimda" data-tr="Hakkımda" data-en="About">Hakkımda</a></li>
-                    <li style="--i:1"><a href="#egitim" data-tr="Eğitim" data-en="Education">Eğitim</a></li>
-                    <li style="--i:2"><a href="#deneyim" data-tr="Deneyim" data-en="Experience">Deneyim</a></li>
-                    <li style="--i:3"><a href="#yetenekler" data-tr="Yetenekler" data-en="Skills">Yetenekler</a></li>
-                    <li style="--i:4"><a href="#projeler" data-tr="Projeler" data-en="Projects">Projeler</a></li>
-                    <li style="--i:5"><a href="#iletisim" data-tr="İletişim" data-en="Contact">İletişim</a></li>
-                </ul>
-                <button onclick="toggleLanguage()" class="lang-btn desktop-lang" aria-label="Dil seçici">
+            <span class="logo-link">
+                <span data-tr="Portfolyo" data-en="Portfolio">Portfolyo</span>
+                <a href="v1/index.html" class="logo-v2" title="Portfolyo V1">v2</a>
+            </span>
+
+            <ul class="nav-links">
+                <li><a href="#hakkimda" data-tr="Hakkımda" data-en="About">Hakkımda</a></li>
+                <li><a href="#egitim" data-tr="Eğitim" data-en="Education">Eğitim</a></li>
+                <li><a href="#deneyim" data-tr="Deneyim" data-en="Experience">Deneyim</a></li>
+                <li><a href="#yetenekler" data-tr="Yetenekler" data-en="Skills">Yetenekler</a></li>
+                <li><a href="#projeler" data-tr="Projeler" data-en="Projects">Projeler</a></li>
+                <li><a href="#iletisim" data-tr="İletişim" data-en="Contact">İletişim</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button type="button" onclick="toggleLanguage()" class="icon-btn lang-btn" aria-label="Dil seçici">
                     <span class="current-lang">TR</span>
-                    <i class="fas fa-globe lang-icon"></i>
                 </button>
-                <button class="theme-toggle desktop-theme" title="Toggles light & dark" aria-label="auto" aria-live="polite">
-                    <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
-                        <mask class="moon" id="moon-mask-desktop">
+                <button type="button" class="icon-btn theme-toggle" title="Toggles light & dark" aria-label="dark" aria-live="polite">
+                    <svg class="sun-and-moon" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24">
+                        <mask class="moon" id="moon-mask">
                             <rect x="0" y="0" width="100%" height="100%" fill="white" />
                             <circle cx="24" cy="10" r="6" fill="black" />
                         </mask>
-                        <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask-desktop)" fill="currentColor" />
+                        <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
                         <g class="sun-beams" stroke="currentColor">
                             <line x1="12" y1="1" x2="12" y2="3" />
                             <line x1="12" y1="21" x2="12" y2="23" />
@@ -45,33 +60,7 @@
                         </g>
                     </svg>
                 </button>
-            </div>
-            <div class="mobile-controls">
-                <button onclick="toggleLanguage()" class="lang-btn mobile-lang" aria-label="Dil seçici">
-                    <span class="current-lang">TR</span>
-                    <i class="fas fa-globe lang-icon"></i>
-                </button>
-                <button class="theme-toggle mobile-theme" title="Toggles light & dark" aria-label="auto" aria-live="polite">
-                    <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
-                        <mask class="moon" id="moon-mask-mobile">
-                            <rect x="0" y="0" width="100%" height="100%" fill="white" />
-                            <circle cx="24" cy="10" r="6" fill="black" />
-                        </mask>
-                        <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask-mobile)" fill="currentColor" />
-                        <g class="sun-beams" stroke="currentColor">
-                            <line x1="12" y1="1" x2="12" y2="3" />
-                            <line x1="12" y1="21" x2="12" y2="23" />
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                            <line x1="1" y1="12" x2="3" y2="12" />
-                            <line x1="21" y1="12" x2="23" y2="12" />
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-                        </g>
-                    </svg>
-                </button>
-                <button class="hamburger-menu" onclick="toggleMenu()">
-                    <span class="hamburger-line"></span>
+                <button type="button" class="icon-btn hamburger-menu" onclick="toggleMenu()" aria-label="Menü">
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                 </button>
@@ -79,370 +68,353 @@
         </div>
     </nav>
 
-    <div class="hero-education-wrap">
-        <section id="hakkimda" class="hero hero-modern">
-            <div class="hero-blob hero-blob--top"></div>
-            <div class="hero-blob hero-blob--bottom" aria-hidden="true"></div>
-            <div class="container hero-container">
-            <div class="hero-grid">
-                <div class="hero-intro">
-                    <h1 class="hero-title">
-                        <span class="hero-greeting hero-anim" data-tr="Merhaba, ben" data-en="Hello, I'm">Merhaba, ben</span>
-                        <br>
-                        <span class="hero-title-name hero-anim hero-anim-name"><span class="typewriter" data-text="İbrahim Mert Sürme!">İbrahim Mert Sürme!</span></span>
+    <main>
+        <!-- Hakkımda -->
+        <section id="hakkimda" class="hero">
+            <div class="container hero-inner">
+                <div class="hero-text">
+                    <p class="hero-subtitle reveal">
+                        <i class="fas fa-tag hero-subtitle-icon" aria-hidden="true"></i>
+                        <span data-tr="Bilgisayar Mühendisliği Son Sınıf Öğrencisi" data-en="Senior Computer Engineering Student">Bilgisayar Mühendisliği Son Sınıf Öğrencisi</span>
+                    </p>
+                    <h1 class="hero-title reveal">
+                        <span class="hero-greeting" data-tr="Merhaba, ben" data-en="Hello, I'm">Merhaba, ben</span>
+                        <span class="hero-name"><span class="typewriter" data-text="İbrahim Mert Sürme!">İbrahim Mert Sürme!</span></span>
                     </h1>
-                </div>
-                <div class="hero-visual-col hero-anim">
-                    <div class="hero-visual-bg" aria-hidden="true"></div>
-                    <div class="hero-avatar-wrap">
-                        <div class="hero-avatar-ring">
-                            <div class="hero-avatar-inner">
-                                <img src="assets/images/pp.jpeg" alt="Profil Fotoğrafı" />
-                            </div>
-                        </div>
-                        <button type="button" class="hero-avatar-badge hero-terminal-trigger" aria-label="Terminali aç">
-                            <i class="fas fa-terminal"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="hero-text-rest hero-anim">
-                    <p class="hero-subtitle" data-tr="Bilgisayar Mühendisliği Son Sınıf Öğrencisi" data-en="Senior Computer Engineering Student">Bilgisayar Mühendisliği Son Sınıf Öğrencisi</p>
-                    <p class="hero-desc" data-tr="22 yaşındayım ve İstanbul Teknik Üniversitesi'nde Bilgisayar Mühendisliği 4. sınıf öğrencisiyim. Genellikle web geliştirme, veritabanları ve yapay zeka ile ilgileniyorum ve bu alanda projeler üretmeye çalışıyorum." data-en="I am 22 years old and a 4th-year Computer Engineering student at Istanbul Technical University. I am mainly interested in web development, databases, and artificial intelligence, and I try to develop projects in these areas.">22 yaşındayım ve İstanbul Teknik Üniversitesi'nde Bilgisayar Mühendisliği 4. sınıf öğrencisiyim. Genellikle web geliştirme, veritabanları ve yapay zeka ile ilgileniyorum ve bu alanda projeler üretmeye çalışıyorum.</p>
-                    <div class="hero-cta">
-                        <a href="#iletisim" class="btn-hero btn-hero--primary">
+                    <p class="hero-desc reveal" data-tr="22 yaşındayım ve İstanbul Teknik Üniversitesi'nde Bilgisayar Mühendisliği 4. sınıf öğrencisiyim. Genellikle web geliştirme, veritabanları ve yapay zeka ile ilgileniyorum ve bu alanda projeler üretmeye çalışıyorum." data-en="I am 22 years old and a 4th-year Computer Engineering student at Istanbul Technical University. I am mainly interested in web development, databases, and artificial intelligence, and I try to develop projects in these areas.">22 yaşındayım ve İstanbul Teknik Üniversitesi'nde Bilgisayar Mühendisliği 4. sınıf öğrencisiyim. Genellikle web geliştirme, veritabanları ve yapay zeka ile ilgileniyorum ve bu alanda projeler üretmeye çalışıyorum.</p>
+                    <div class="hero-cta reveal">
+                        <a href="#iletisim" class="btn btn-primary">
                             <span data-tr="Benimle İletişime Geç" data-en="Contact Me">Benimle İletişime Geç</span>
                             <i class="fas fa-arrow-right" aria-hidden="true"></i>
                         </a>
-                        <a href="assets/docs/cv.pdf" download="ibrahim_mert_surme_cv.pdf" class="btn-hero btn-hero--secondary">
+                        <a href="assets/docs/cv.pdf" download="ibrahim_mert_surme_cv.pdf" class="btn">
                             <span data-tr="CV İndir" data-en="Download CV">CV İndir</span>
                             <i class="fas fa-download" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
+
+                <div class="hero-visual reveal">
+                    <div class="hero-avatar">
+                        <img src="assets/images/pp.jpeg" alt="Profil Fotoğrafı">
+                    </div>
+                    <button type="button" class="hero-terminal-trigger" aria-label="Terminali aç">
+                        <i class="fas fa-terminal" aria-hidden="true"></i>
+                        <span class="hero-terminal-cmd">~$ help</span>
+                    </button>
+                </div>
             </div>
-        </div>
-        <a href="#egitim" class="hero-scroll-hint hero-anim hero-anim-scroll" aria-label="Aşağı kaydır">
-            <span class="hero-scroll-text" data-tr="Kaydır" data-en="Scroll">Kaydır</span>
-            <div class="hero-scroll-dot"></div>
-        </a>
+
+            <a href="#egitim" class="hero-scroll-hint" aria-label="Aşağı kaydır">
+                <span data-tr="Kaydır" data-en="Scroll">Kaydır</span>
+                <i class="fas fa-arrow-down" aria-hidden="true"></i>
+            </a>
         </section>
 
-        <section id="egitim" class="education education-timeline">
-        <div class="education-blob education-blob--1"></div>
-        <div class="education-blob education-blob--2"></div>
-        <div class="education-blob education-blob--3"></div>
-        <div class="container education-container">
-            <header class="education-header">
-                <h2 class="education-title-simple" data-tr="Eğitim" data-en="Education">Eğitim</h2>
-            </header>
-            <div class="timeline-line">
-                <div class="timeline-item timeline-item--left">
-                    <span class="timeline-dot timeline-dot--primary" aria-hidden="true"></span>
-                    <div class="timeline-card-wrap">
-                        <div class="edu-card edu-card--primary">
-                            <span class="edu-card-accent edu-card-accent--br"></span>
-                            <div class="edu-card-inner">
-                                <span class="edu-date-tag" data-tr="2022 - Devam Ediyor" data-en="2022 - Present">2022 - Devam Ediyor</span>
-                                <h3 class="edu-card-title" data-tr="Bilgisayar Mühendisliği" data-en="Computer Engineering">Bilgisayar Mühendisliği</h3>
-                                <p class="edu-card-desc" data-tr="GNO: 3.16/4.00" data-en="GPA: 3.16/4.00">GNO: 3.16/4.00</p>
-                                <div class="edu-card-school">
-                                    <img src="assets/images/itu-logo.png" alt="" class="edu-card-logo" width="48" height="48">
-                                    <span data-tr="İstanbul Teknik Üniversitesi" data-en="Istanbul Technical University">İstanbul Teknik Üniversitesi</span>
+        <!-- Eğitim -->
+        <section id="egitim" class="block">
+            <div class="container">
+                <header class="section-head reveal">
+                    <span class="section-index">01</span>
+                    <h2 data-tr="Eğitim" data-en="Education">Eğitim</h2>
+                </header>
+
+                <div class="edu-track reveal">
+                    <div class="edu-line" aria-hidden="true">
+                        <span class="edu-line-fill"></span>
+                        <span class="edu-line-arrow"></span>
+                    </div>
+
+                    <article class="edu-stop">
+                        <span class="edu-dot" aria-hidden="true"></span>
+                        <div class="edu-date"><span data-tr="2017 - 2021" data-en="2017 - 2021">2017 - 2021</span></div>
+                        <div class="edu-card">
+                            <div class="timeline-title-row">
+                                <span class="org-logo org-logo--icon" aria-hidden="true"><i class="fas fa-school"></i></span>
+                                <div>
+                                    <h3 data-tr="Batman Fen Lisesi" data-en="Batman Science High School">Batman Fen Lisesi</h3>
                                 </div>
                             </div>
+                            <p class="timeline-meta" data-tr="GNO: 97.9/100" data-en="GPA: 97.9/100">GNO: 97.9/100</p>
                         </div>
-                    </div>
-                </div>
-                <div class="timeline-item timeline-item--right">
-                    <span class="timeline-dot timeline-dot--rose" aria-hidden="true"></span>
-                    <div class="timeline-card-wrap">
-                        <div class="edu-card edu-card--rose">
-                            <span class="edu-card-accent edu-card-accent--tl"></span>
-                            <div class="edu-card-inner">
-                                <span class="edu-date-tag edu-date-tag--rose" data-tr="2017 - 2021" data-en="2017 - 2021">2017 - 2021</span>
-                                <h3 class="edu-card-title" data-tr="Batman Fen Lisesi" data-en="Batman Science High School">Batman Fen Lisesi</h3>
-                                <p class="edu-card-desc" data-tr="GNO: 97.9/100" data-en="GPA: 97.9/100">GNO: 97.9/100</p>
+                    </article>
+
+                    <article class="edu-stop edu-stop--current">
+                        <span class="edu-dot" aria-hidden="true"></span>
+                        <div class="edu-date"><span data-tr="2022 - Devam Ediyor" data-en="2022 - Present">2022 - Devam Ediyor</span></div>
+                        <div class="edu-card">
+                            <div class="timeline-title-row">
+                                <img src="assets/images/itu-logo.png" alt="" class="org-logo" width="40" height="40">
+                                <div>
+                                    <h3 data-tr="Bilgisayar Mühendisliği" data-en="Computer Engineering">Bilgisayar Mühendisliği</h3>
+                                    <p class="timeline-org" data-tr="İstanbul Teknik Üniversitesi" data-en="Istanbul Technical University">İstanbul Teknik Üniversitesi</p>
+                                </div>
                             </div>
+                            <p class="timeline-meta" data-tr="GNO: 3.16/4.00" data-en="GPA: 3.16/4.00">GNO: 3.16/4.00</p>
                         </div>
-                    </div>
+                    </article>
                 </div>
             </div>
-        </div>
         </section>
-    </div>
 
-    <section id="deneyim" class="experience experience-modern">
-        <div class="container experience-container">
-            <header class="experience-header">
-                <h2 class="experience-title-simple" data-tr="Deneyim" data-en="Experience">Deneyim</h2>
-            </header>
-            <div class="experience-grid">
-                <article class="exp-card">
-                    <span class="exp-card-accent" aria-hidden="true"></span>
-                    <div class="exp-card-top">
-                        <div class="exp-card-company">
-                            <a href="https://www.intertech.com.tr/" target="_blank" rel="noopener noreferrer" class="exp-card-logo-wrap">
-                                <img src="assets/images/intertech-logo.svg" alt="Intertech" class="exp-card-logo">
-                            </a>
-                            <div>
-                                <h3 class="exp-card-company-name" data-tr="Intertech Bilgi Teknolojileri" data-en="Intertech Information Technologies">Intertech Bilgi Teknolojileri</h3>
-                                <p class="exp-card-location" data-tr="Türkiye" data-en="Turkey">Türkiye</p>
-                            </div>
-                        </div>
-                        <span class="exp-date-tag" data-tr="Ağustos – Eylül 2025" data-en="Aug – Sep 2025">Ağustos – Eylül 2025</span>
-                    </div>
-                    <h4 class="exp-card-role" data-tr="Yazılım Mühendisliği Stajyeri" data-en="Software Engineer Intern">Yazılım Mühendisliği Stajyeri</h4>
-                    <ul class="exp-card-list">
-                        <li>
-                            <i class="fas fa-check-circle exp-card-icon" aria-hidden="true"></i>
-                            <span data-tr="InterChat (LLM odaklı akıllı bankacılık asistanı) geliştirmesinde yer aldım." data-en="Contributed to InterChat, an LLM-centric smart banking assistant.">InterChat (LLM odaklı akıllı bankacılık asistanı) geliştirmesinde yer aldım.</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle exp-card-icon" aria-hidden="true"></i>
-                            <span data-tr="React + Vite ile bileşen tabanlı, responsive arayüzler geliştirdim." data-en="Built component-based, responsive UIs with React + Vite.">React + Vite ile bileşen tabanlı, responsive arayüzler geliştirdim.</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle exp-card-icon" aria-hidden="true"></i>
-                            <span data-tr="FastAPI, JWT kimlik doğrulama ve LangChain + MCP ile araç orkestrasyonu üzerinde çalıştım." data-en="Worked on FastAPI, JWT auth, and LangChain + MCP tool orchestration.">FastAPI, JWT kimlik doğrulama ve LangChain + MCP ile araç orkestrasyonu üzerinde çalıştım.</span>
-                        </li>
-                    </ul>
-                    <div class="exp-card-tech">
-                        <span class="exp-tech-tag">Python (FastAPI)</span>
-                        <span class="exp-tech-tag">React</span>
-                        <span class="exp-tech-tag">SQLite</span>
-                        <span class="exp-tech-tag">LangChain</span>
-                        <span class="exp-tech-tag">LangGraph</span>
-                        <span class="exp-tech-tag">Docker</span>
-                    </div>
-                    <div class="exp-card-links">
-                        <a href="https://github.com/imSurme/interchat-banking-assistant" target="_blank" rel="noopener noreferrer" class="exp-card-btn">
-                            GitHub <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
+        <!-- Deneyim -->
+        <section id="deneyim" class="block">
+            <div class="container">
+                <header class="section-head reveal">
+                    <span class="section-index">02</span>
+                    <h2 data-tr="Deneyim" data-en="Experience">Deneyim</h2>
+                </header>
 
-    <section id="yetenekler" class="skills skills-modern">
-        <div class="skills-blob skills-blob--1" aria-hidden="true"></div>
-        <div class="skills-blob skills-blob--2" aria-hidden="true"></div>
-        <div class="skills-blob skills-blob--3" aria-hidden="true"></div>
-        <div class="container skills-container">
-            <header class="skills-header">
-                <h2 class="skills-title-simple" data-tr="Yeteneklerim" data-en="My Skills">Yeteneklerim</h2>
-            </header>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <span class="skill-card-glow" aria-hidden="true"></span>
-                    <div class="skill-card-inner">
-                        <div class="skill-icon-wrap">
-                            <svg class="skill-ring" viewBox="0 0 96 96" aria-hidden="true">
-                                <circle class="skill-ring-bg" cx="48" cy="48" r="40" fill="none" stroke="currentColor" stroke-width="6"/>
-                                <circle class="skill-ring-fill" cx="48" cy="48" r="40" fill="none" stroke="currentColor" stroke-width="6" stroke-dasharray="251.2" stroke-dashoffset="50"/>
-                            </svg>
-                            <i class="fas fa-code skill-icon" aria-hidden="true"></i>
-                        </div>
-                        <h3 data-tr="Programlama" data-en="Programming">Programlama</h3>
-                        <p>C, C++, Python</p>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <span class="skill-card-glow" aria-hidden="true"></span>
-                    <div class="skill-card-inner">
-                        <div class="skill-icon-wrap">
-                            <svg class="skill-ring" viewBox="0 0 96 96" aria-hidden="true">
-                                <circle class="skill-ring-bg" cx="48" cy="48" r="40" fill="none" stroke="currentColor" stroke-width="6"/>
-                                <circle class="skill-ring-fill skill-ring-fill--blue" cx="48" cy="48" r="40" fill="none" stroke="currentColor" stroke-width="6" stroke-dasharray="251.2" stroke-dashoffset="45"/>
-                            </svg>
-                            <i class="fas fa-globe skill-icon" aria-hidden="true"></i>
-                        </div>
-                        <h3 data-tr="Web Geliştirme" data-en="Web Development">Web Geliştirme</h3>
-                        <p>HTML, CSS, JavaScript, React</p>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <span class="skill-card-glow" aria-hidden="true"></span>
-                    <div class="skill-card-inner">
-                        <div class="skill-icon-wrap">
-                            <svg class="skill-ring" viewBox="0 0 96 96" aria-hidden="true">
-                                <circle class="skill-ring-bg" cx="48" cy="48" r="40" fill="none" stroke="currentColor" stroke-width="6"/>
-                                <circle class="skill-ring-fill skill-ring-fill--purple" cx="48" cy="48" r="40" fill="none" stroke="currentColor" stroke-width="6" stroke-dasharray="251.2" stroke-dashoffset="62"/>
-                            </svg>
-                            <i class="fas fa-database skill-icon" aria-hidden="true"></i>
-                        </div>
-                        <h3 data-tr="Veritabanı" data-en="Database">Veritabanı</h3>
-                        <p>MySQL, SQLite</p>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <span class="skill-card-glow" aria-hidden="true"></span>
-                    <div class="skill-card-inner">
-                        <div class="skill-icon-wrap">
-                            <svg class="skill-ring" viewBox="0 0 96 96" aria-hidden="true">
-                                <circle class="skill-ring-bg" cx="48" cy="48" r="40" fill="none" stroke="currentColor" stroke-width="6"/>
-                                <circle class="skill-ring-fill skill-ring-fill--orange" cx="48" cy="48" r="40" fill="none" stroke="currentColor" stroke-width="6" stroke-dasharray="251.2" stroke-dashoffset="75"/>
-                            </svg>
-                            <i class="fas fa-microchip skill-icon" aria-hidden="true"></i>
-                        </div>
-                        <h3 data-tr="Donanım" data-en="Hardware">Donanım</h3>
-                        <p>Verilog, Assembly</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projeler" class="projects projects-modern">
-        <div class="projects-blob projects-blob--1" aria-hidden="true"></div>
-        <div class="projects-blob projects-blob--2" aria-hidden="true"></div>
-        <div class="projects-blob projects-blob--3" aria-hidden="true"></div>
-        <div class="container projects-container">
-            <header class="projects-header">
-                <h2 class="projects-title-simple" data-tr="Projelerim" data-en="My Projects">Projelerim</h2>
-            </header>
-            <div class="projects-carousel">
-                <button class="projects-arrow left" aria-label="Geri">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <div class="projects-track projects-masonry" role="region" aria-label="Projeler listesi">
-                    <article class="project-card" data-category="web">
-                        <div class="project-card-inner">
-                            <div class="project-card-front">
-                                <div class="project-card-image-wrap">
-                                    <img src="assets/images/ss1.png" alt="YemekMetre" class="project-image">
+                <div class="timeline">
+                    <article class="timeline-row reveal">
+                        <div class="timeline-date"><span data-tr="Ağustos – Eylül 2025" data-en="Aug – Sep 2025">Ağustos – Eylül 2025</span></div>
+                        <div class="timeline-body">
+                            <div class="timeline-title-row">
+                                <a href="https://www.intertech.com.tr/" target="_blank" rel="noopener noreferrer" class="org-logo org-logo--link">
+                                    <img src="assets/images/intertech-logo.svg" alt="Intertech">
+                                </a>
+                                <div>
+                                    <h3 data-tr="Yazılım Mühendisliği Stajyeri" data-en="Software Engineer Intern">Yazılım Mühendisliği Stajyeri</h3>
+                                    <p class="timeline-org">
+                                        <span data-tr="Intertech Bilgi Teknolojileri" data-en="Intertech Information Technologies">Intertech Bilgi Teknolojileri</span>
+                                        <span class="dot-sep" aria-hidden="true">·</span>
+                                        <span data-tr="Türkiye" data-en="Turkey">Türkiye</span>
+                                    </p>
                                 </div>
                             </div>
-                            <div class="project-card-back">
+                            <ul class="bullet-list">
+                                <li><span data-tr="InterChat (LLM odaklı akıllı bankacılık asistanı) geliştirmesinde yer aldım." data-en="Contributed to InterChat, an LLM-centric smart banking assistant.">InterChat (LLM odaklı akıllı bankacılık asistanı) geliştirmesinde yer aldım.</span></li>
+                                <li><span data-tr="React + Vite ile bileşen tabanlı, responsive arayüzler geliştirdim." data-en="Built component-based, responsive UIs with React + Vite.">React + Vite ile bileşen tabanlı, responsive arayüzler geliştirdim.</span></li>
+                                <li><span data-tr="FastAPI, JWT kimlik doğrulama ve LangChain + MCP ile araç orkestrasyonu üzerinde çalıştım." data-en="Worked on FastAPI, JWT auth, and LangChain + MCP tool orchestration.">FastAPI, JWT kimlik doğrulama ve LangChain + MCP ile araç orkestrasyonu üzerinde çalıştım.</span></li>
+                            </ul>
+                            <div class="tags">
+                                <span class="tag">Python (FastAPI)</span>
+                                <span class="tag">React</span>
+                                <span class="tag">SQLite</span>
+                                <span class="tag">LangChain</span>
+                                <span class="tag">LangGraph</span>
+                                <span class="tag">Docker</span>
+                            </div>
+                            <div class="row-links">
+                                <a href="https://github.com/imSurme/interchat-banking-assistant" target="_blank" rel="noopener noreferrer" class="link-chip">
+                                    <i class="fab fa-github" aria-hidden="true"></i> GitHub <span aria-hidden="true">↗</span>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Yetenekler -->
+        <section id="yetenekler" class="block">
+            <div class="container">
+                <header class="section-head reveal">
+                    <span class="section-index">03</span>
+                    <h2 data-tr="Yeteneklerim" data-en="My Skills">Yeteneklerim</h2>
+                </header>
+
+                <div class="skills-grid reveal">
+                    <div class="skill-group">
+                        <div class="skill-group-head">
+                            <i class="fas fa-code" aria-hidden="true"></i>
+                            <h3 data-tr="Programlama" data-en="Programming">Programlama</h3>
+                        </div>
+                        <div class="tags">
+                            <span class="tag">C</span><span class="tag">C++</span><span class="tag">Python</span>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <div class="skill-group-head">
+                            <i class="fas fa-globe" aria-hidden="true"></i>
+                            <h3 data-tr="Web Geliştirme" data-en="Web Development">Web Geliştirme</h3>
+                        </div>
+                        <div class="tags">
+                            <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">React</span>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <div class="skill-group-head">
+                            <i class="fas fa-database" aria-hidden="true"></i>
+                            <h3 data-tr="Veritabanı" data-en="Database">Veritabanı</h3>
+                        </div>
+                        <div class="tags">
+                            <span class="tag">MySQL</span><span class="tag">SQLite</span>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <div class="skill-group-head">
+                            <i class="fas fa-microchip" aria-hidden="true"></i>
+                            <h3 data-tr="Donanım" data-en="Hardware">Donanım</h3>
+                        </div>
+                        <div class="tags">
+                            <span class="tag">Verilog</span><span class="tag">Assembly</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projeler -->
+        <section id="projeler" class="block">
+            <div class="container">
+                <header class="section-head reveal">
+                    <span class="section-index">04</span>
+                    <h2 data-tr="Projelerim" data-en="My Projects">Projelerim</h2>
+                </header>
+
+                <div class="projects-grid">
+                    <div class="projects-col">
+                        <article class="project-card reveal" style="--order:1">
+                            <div class="project-shot">
+                                <img src="assets/images/ss1.png" alt="YemekMetre" class="project-image" loading="lazy">
+                            </div>
+                            <div class="project-body">
                                 <div class="project-header">
                                     <img src="assets/images/yemekmetre-logo.svg" alt="" class="project-logo">
                                     <h3 data-tr="YemekMetre - İTÜ Yemek Takip Sistemi" data-en="YemekMetre - ITU Food Tracking System">YemekMetre - İTÜ Yemek Takip Sistemi</h3>
                                 </div>
-                                <p data-tr="İTÜ öğrencileri için geliştirilmiş, yemek menüsü takip ve değerlendirme platformu." data-en="A food menu tracking and rating platform developed for ITU students.">İTÜ öğrencileri için geliştirilmiş, yemek menüsü takip ve değerlendirme platformu.</p>
-                                <div class="project-tech">
-                                    <span class="tech-item">HTML</span>
-                                    <span class="tech-item">CSS</span>
-                                    <span class="tech-item">JavaScript</span>
-                                    <span class="tech-item">Python (Flask)</span>
-                                    <span class="tech-item">Supabase</span>
+                                <p class="project-desc" data-tr="İTÜ öğrencileri için geliştirilmiş, yemek menüsü takip ve değerlendirme platformu." data-en="A food menu tracking and rating platform developed for ITU students.">İTÜ öğrencileri için geliştirilmiş, yemek menüsü takip ve değerlendirme platformu.</p>
+                                <div class="tags">
+                                    <span class="tag">HTML</span>
+                                    <span class="tag">CSS</span>
+                                    <span class="tag">JavaScript</span>
+                                    <span class="tag">Python (Flask)</span>
+                                    <span class="tag">Supabase</span>
                                 </div>
-                                <div class="project-links">
-                                    <a href="https://ituyemekmetre.com" target="_blank" class="btn small">Demo <i class="fas fa-external-link-alt"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="project-card" data-category="fullstack">
-                        <div class="project-card-inner">
-                            <div class="project-card-front">
-                                <div class="project-card-image-wrap">
-                                    <img src="assets/images/ss4.png" alt="InterChat" class="project-image">
+                                <div class="row-links">
+                                    <a href="https://ituyemekmetre.com" target="_blank" rel="noopener" class="link-chip">Demo <span aria-hidden="true">↗</span></a>
                                 </div>
                             </div>
-                            <div class="project-card-back">
-                                <div class="project-header">
-                                    <img src="assets/images/interchat-logo.jpg" alt="" class="project-logo">
-                                    <h3 data-tr="InterChat - Akıllı Bankacılık Asistanı" data-en="InterChat - Smart Banking Assistant">InterChat - Akıllı Bankacılık Asistanı</h3>
-                                </div>
-                                <p data-tr="Yapay zeka destekli, güvenli bankacılık asistanı. Hesap yönetimi, transfer, döviz/faiz, yatırım ve daha fazlası." data-en="AI‑powered, secure banking assistant. Accounts, transfers, FX/interest, investments and more.">Yapay zeka destekli, güvenli bankacılık asistanı.</p>
-                                <div class="project-tech">
-                                    <span class="tech-item">FastAPI</span>
-                                    <span class="tech-item">React</span>
-                                    <span class="tech-item">SQLite</span>
-                                    <span class="tech-item">LangChain</span>
-                                </div>
-                                <div class="project-links">
-                                    <a href="https://github.com/imSurme/interchat-banking-assistant" target="_blank" class="btn small">GitHub <i class="fas fa-external-link-alt"></i></a>
-                                </div>
+                        </article>
+                        <article class="project-card reveal" style="--order:4">
+                            <div class="project-shot">
+                                <img src="assets/images/ss2.png" alt="Restoran Yönetim Sistemi" class="project-image" loading="lazy">
                             </div>
-                        </div>
-                    </article>
-                    <article class="project-card" data-category="web">
-                        <div class="project-card-inner">
-                            <div class="project-card-front">
-                                <div class="project-card-image-wrap project-card-image-wrap--triple">
-                                    <img src="assets/images/ss5.png" alt="Modern Shopping App 1" class="project-image">
-                                    <img src="assets/images/ss6.png" alt="Modern Shopping App 2" class="project-image">
-                                    <img src="assets/images/ss7.png" alt="Modern Shopping App 3" class="project-image">
-                                </div>
-                            </div>
-                            <div class="project-card-back">
-                                <div class="project-header">
-                                    <span class="project-logo-icon material-symbols-outlined" aria-hidden="true">shopping_bag</span>
-                                    <h3 data-tr="Modern Shopping App" data-en="Modern Shopping App">Modern Shopping App</h3>
-                                </div>
-                                <p data-tr="Demo alışveriş web uygulaması. Ürün kataloğu, sepet, çok adımlı ödeme simülasyonu." data-en="Demo shopping web app. Product catalog, cart, multi-step checkout.">Demo alışveriş web uygulaması.</p>
-                                <div class="project-tech">
-                                    <span class="tech-item">HTML</span>
-                                    <span class="tech-item">CSS</span>
-                                    <span class="tech-item">JavaScript</span>
-                                </div>
-                                <div class="project-links">
-                                    <a href="https://imsurme.github.io/shoppping-app/" target="_blank" class="btn small">Demo <i class="fas fa-external-link-alt"></i></a>
-                                    <a href="https://github.com/imSurme/shoppping-app" target="_blank" class="btn small">GitHub <i class="fas fa-external-link-alt"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="project-card" data-category="web">
-                        <div class="project-card-inner">
-                            <div class="project-card-front">
-                                <div class="project-card-image-wrap">
-                                    <img src="assets/images/ss2.png" alt="Restoran Yönetim Sistemi" class="project-image">
-                                </div>
-                            </div>
-                            <div class="project-card-back">
+                            <div class="project-body">
                                 <div class="project-header">
                                     <img src="assets/images/logo.png" alt="" class="project-logo">
                                     <h3 data-tr="Restoran Yönetim Sistemi" data-en="Restaurant Management System">Restoran Yönetim Sistemi</h3>
                                 </div>
-                                <p data-tr="Restoranlar için yönetim ve sipariş takibi yapabilecekleri bir platform." data-en="A management and order tracking platform for restaurants.">Restoranlar için yönetim ve sipariş takibi platformu.</p>
-                                <div class="project-tech">
-                                    <span class="tech-item">HTML</span>
-                                    <span class="tech-item">CSS</span>
-                                    <span class="tech-item">JavaScript</span>
-                                    <span class="tech-item">Python (Flask)</span>
-                                    <span class="tech-item">MySQL</span>
+                                <p class="project-desc" data-tr="Restoranlar için yönetim ve sipariş takibi yapabilecekleri bir platform." data-en="A management and order tracking platform for restaurants.">Restoranlar için yönetim ve sipariş takibi yapabilecekleri bir platform.</p>
+                                <div class="tags">
+                                    <span class="tag">HTML</span>
+                                    <span class="tag">CSS</span>
+                                    <span class="tag">JavaScript</span>
+                                    <span class="tag">Python (Flask)</span>
+                                    <span class="tag">MySQL</span>
                                 </div>
-                                <div class="project-links">
-                                    <a href="https://github.com/imSurme/FDManagementSystem" target="_blank" class="btn small">GitHub <i class="fas fa-external-link-alt"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="project-card" data-category="web">
-                        <div class="project-card-inner">
-                            <div class="project-card-front">
-                                <div class="project-card-image-wrap">
-                                    <img src="assets/images/ss3.png" alt="Tweet Battle" class="project-image">
+                                <div class="row-links">
+                                    <a href="https://github.com/imSurme/FDManagementSystem" target="_blank" rel="noopener" class="link-chip"><i class="fab fa-github" aria-hidden="true"></i> GitHub <span aria-hidden="true">↗</span></a>
                                 </div>
                             </div>
-                            <div class="project-card-back">
+                        </article>
+                    </div>
+                    <div class="projects-col">
+                        <article class="project-card reveal" style="--order:2">
+                            <div class="project-shot">
+                                <img src="assets/images/ss4.png" alt="InterChat" class="project-image" loading="lazy">
+                            </div>
+                            <div class="project-body">
                                 <div class="project-header">
-                                    <span class="project-logo-icon material-symbols-outlined" aria-hidden="true">campaign</span>
-                                    <h3 data-tr="Tweet Battle" data-en="Tweet Battle">Tweet Battle</h3>
+                                    <img src="assets/images/interchat-logo.jpg" alt="" class="project-logo">
+                                    <h3 data-tr="InterChat - Akıllı Bankacılık Asistanı" data-en="InterChat - Smart Banking Assistant">InterChat - Akıllı Bankacılık Asistanı</h3>
                                 </div>
-                                <p data-tr="Tweet etkileşimini tahmin etme oyunu." data-en="A game to predict tweet engagement.">Tweet etkileşimini tahmin etme oyunu.</p>
-                                <div class="project-tech">
-                                    <span class="tech-item">HTML</span>
-                                    <span class="tech-item">CSS</span>
-                                    <span class="tech-item">JavaScript</span>
+                                <p class="project-desc" data-tr="Yapay zeka destekli, güvenli bankacılık asistanı. Hesap yönetimi, transfer, döviz/faiz, yatırım ve daha fazlası." data-en="AI‑powered, secure banking assistant. Accounts, transfers, FX/interest, investments and more.">Yapay zeka destekli, güvenli bankacılık asistanı. Hesap yönetimi, transfer, döviz/faiz, yatırım ve daha fazlası.</p>
+                                <div class="tags">
+                                    <span class="tag">FastAPI</span>
+                                    <span class="tag">React</span>
+                                    <span class="tag">SQLite</span>
+                                    <span class="tag">LangChain</span>
                                 </div>
-                                <div class="project-links">
-                                    <a href="https://imsurme.github.io/tweetBattle/" target="_blank" class="btn small">Demo <i class="fas fa-external-link-alt"></i></a>
-                                    <a href="https://github.com/imSurme/tweetBattle" target="_blank" class="btn small">GitHub <i class="fas fa-external-link-alt"></i></a>
+                                <div class="row-links">
+                                    <a href="https://github.com/imSurme/interchat-banking-assistant" target="_blank" rel="noopener" class="link-chip"><i class="fab fa-github" aria-hidden="true"></i> GitHub <span aria-hidden="true">↗</span></a>
                                 </div>
+                            </div>
+                        </article>
+                        <article class="project-card project-card--stretch reveal" style="--order:3">
+                            <div class="project-shot project-shot--triple">
+                                <img src="assets/images/ss5.png" alt="Modern Shopping App 1" class="project-image" loading="lazy">
+                                <img src="assets/images/ss6.png" alt="Modern Shopping App 2" class="project-image" loading="lazy">
+                                <img src="assets/images/ss7.png" alt="Modern Shopping App 3" class="project-image" loading="lazy">
+                            </div>
+                            <div class="project-body">
+                                <div class="project-header">
+                                    <span class="project-logo project-logo--icon" aria-hidden="true"><i class="fas fa-bag-shopping"></i></span>
+                                    <h3 data-tr="Modern Shopping App" data-en="Modern Shopping App">Modern Shopping App</h3>
+                                </div>
+                                <p class="project-desc" data-tr="Demo alışveriş web uygulaması. Ürün kataloğu, sepet, çok adımlı ödeme simülasyonu." data-en="Demo shopping web app. Product catalog, cart, multi-step checkout.">Demo alışveriş web uygulaması. Ürün kataloğu, sepet, çok adımlı ödeme simülasyonu.</p>
+                                <div class="tags">
+                                    <span class="tag">HTML</span>
+                                    <span class="tag">CSS</span>
+                                    <span class="tag">JavaScript</span>
+                                </div>
+                                <div class="row-links">
+                                    <a href="https://imsurme.github.io/shoppping-app/" target="_blank" rel="noopener" class="link-chip">Demo <span aria-hidden="true">↗</span></a>
+                                    <a href="https://github.com/imSurme/shoppping-app" target="_blank" rel="noopener" class="link-chip"><i class="fab fa-github" aria-hidden="true"></i> GitHub <span aria-hidden="true">↗</span></a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <article class="project-card project-card--wide reveal" style="--order:5">
+                        <div class="project-shot">
+                            <img src="assets/images/ss3.png" alt="Tweet Battle" class="project-image" loading="lazy">
+                        </div>
+                        <div class="project-body">
+                            <div class="project-header">
+                                <span class="project-logo project-logo--icon project-logo--swords" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/><line x1="13" y1="19" x2="19" y2="13"/><line x1="16" y1="16" x2="20" y2="20"/><line x1="19" y1="21" x2="21" y2="19"/><polyline points="14.5 6.5 18 3 21 3 21 6 17.5 9.5"/><line x1="5" y1="14" x2="9" y2="18"/><line x1="7" y1="17" x2="4" y2="20"/><line x1="3" y1="19" x2="5" y2="21"/></svg></span>
+                                <h3 data-tr="Tweet Battle" data-en="Tweet Battle">Tweet Battle</h3>
+                            </div>
+                            <p class="project-desc" data-tr="Tweet etkileşimini tahmin etme oyunu." data-en="A game to predict tweet engagement.">Tweet etkileşimini tahmin etme oyunu.</p>
+                            <div class="tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                            <div class="row-links">
+                                <a href="https://imsurme.github.io/tweetBattle/" target="_blank" rel="noopener" class="link-chip">Demo <span aria-hidden="true">↗</span></a>
+                                <a href="https://github.com/imSurme/tweetBattle" target="_blank" rel="noopener" class="link-chip"><i class="fab fa-github" aria-hidden="true"></i> GitHub <span aria-hidden="true">↗</span></a>
                             </div>
                         </div>
                     </article>
                 </div>
-                <div class="projects-dots" aria-label="Projeler sayfalama" role="tablist"></div>
-                <button class="projects-arrow right" aria-label="İleri">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
+                <div class="projects-dots" aria-hidden="true"></div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- İletişim -->
+        <section id="iletisim" class="block">
+            <div class="container">
+                <header class="section-head reveal">
+                    <span class="section-index">05</span>
+                    <h2 data-tr="İletişim" data-en="Contact">İletişim</h2>
+                </header>
+
+                <div class="contact-grid reveal">
+                    <a href="mailto:mrtsrm27@gmail.com" class="contact-link" aria-label="E-posta">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        <span class="contact-link-text">mrtsrm27@gmail.com</span>
+                        <span class="contact-link-arrow" aria-hidden="true">↗</span>
+                    </a>
+                    <a href="https://github.com/imSurme" target="_blank" rel="noopener" class="contact-link" aria-label="GitHub">
+                        <i class="fab fa-github" aria-hidden="true"></i>
+                        <span class="contact-link-text">github.com/imSurme</span>
+                        <span class="contact-link-arrow" aria-hidden="true">↗</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/imsurme" target="_blank" rel="noopener" class="contact-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin" aria-hidden="true"></i>
+                        <span class="contact-link-text">linkedin.com/in/imsurme</span>
+                        <span class="contact-link-arrow" aria-hidden="true">↗</span>
+                    </a>
+                    <a href="https://www.instagram.com/mrtsrm27" target="_blank" rel="noopener" class="contact-link" aria-label="Instagram">
+                        <i class="fab fa-instagram" aria-hidden="true"></i>
+                        <span class="contact-link-text">instagram.com/mrtsrm27</span>
+                        <span class="contact-link-arrow" aria-hidden="true">↗</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Görsel Lightbox Modal -->
     <div class="image-modal" aria-hidden="true" role="dialog" aria-label="Görsel Önizleme">
@@ -451,25 +423,6 @@
         </button>
         <img src="" alt="Büyük Görsel" class="image-modal-content">
     </div>
-
-    <section id="iletisim" class="contact contact-modern">
-        <div class="contact-blob contact-blob--1" aria-hidden="true"></div>
-        <div class="contact-blob contact-blob--2" aria-hidden="true"></div>
-        <div class="contact-blob contact-blob--3" aria-hidden="true"></div>
-        <div class="container contact-container">
-            <header class="contact-header">
-                <h2 class="contact-title-simple" data-tr="İletişim" data-en="Contact">İletişim</h2>
-            </header>
-            <div class="contact-content">
-                <div class="social-links">
-                    <a href="https://github.com/imSurme" target="_blank" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/imsurme" target="_blank" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://www.instagram.com/mrtsrm27" target="_blank" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="mailto:mrtsrm27@gmail.com" target="_blank" class="social-link" aria-label="E-posta"><i class="fas fa-envelope"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <div class="terminal-wrapper">
         <div class="terminal">
@@ -491,8 +444,8 @@
         </div>
     </div>
 
-    <footer>
-        <div class="container">
+    <footer class="footer">
+        <div class="container footer-inner">
             <p>&copy; <span id="footer-year"></span> <span data-tr="Tüm Hakları Saklıdır." data-en="All Rights Reserved.">Tüm Hakları Saklıdır.</span></p>
         </div>
     </footer>

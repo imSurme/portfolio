@@ -1,27 +1,48 @@
 // Hamburger menü toggle fonksiyonu
 function toggleMenu() {
-    const navLinks = document.querySelector('.nav-links');
+    const navContainer = document.querySelector('.nav-container');
     const hamburgerMenu = document.querySelector('.hamburger-menu');
-    navLinks.classList.toggle('active');
+    navContainer.classList.toggle('active');
     hamburgerMenu.classList.toggle('active');
-}
-
-function closeMenu() {
-    document.querySelector('.nav-links')?.classList.remove('active');
-    document.querySelector('.hamburger-menu')?.classList.remove('active');
+    
+    // Menü açıkken mouse wheel eventini engelle
+    if (navContainer.classList.contains('active')) {
+        navContainer.addEventListener('wheel', (e) => {
+            e.preventDefault();
+        }, { passive: false });
+    } else {
+        navContainer.removeEventListener('wheel', (e) => {
+            e.preventDefault();
+        });
+    }
 }
 
 // Menü linklerine tıklandığında menüyü kapat
 document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', closeMenu);
+    link.addEventListener('click', () => {
+        const navContainer = document.querySelector('.nav-container');
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
+        if (navContainer.classList.contains('active')) {
+            navContainer.classList.remove('active');
+            hamburgerMenu.classList.remove('active');
+            navContainer.removeEventListener('wheel', (e) => {
+                e.preventDefault();
+            });
+        }
+    });
 });
 
 // Sayfa dışına tıklandığında menüyü kapat
 document.addEventListener('click', (e) => {
-    const navLinks = document.querySelector('.nav-links');
+    const navContainer = document.querySelector('.nav-container');
     const hamburgerMenu = document.querySelector('.hamburger-menu');
-    if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && !hamburgerMenu.contains(e.target)) {
-        closeMenu();
+    
+    if (!navContainer.contains(e.target) && !hamburgerMenu.contains(e.target) && navContainer.classList.contains('active')) {
+        navContainer.classList.remove('active');
+        hamburgerMenu.classList.remove('active');
+        navContainer.removeEventListener('wheel', (e) => {
+            e.preventDefault();
+        });
     }
 });
 
@@ -30,134 +51,276 @@ let currentLang = 'tr';
 
 function toggleLanguage() {
     currentLang = currentLang === 'tr' ? 'en' : 'tr';
-
+    
+    // Tüm dil butonlarını güncelle
     document.querySelectorAll('.current-lang').forEach(langButton => {
         langButton.textContent = currentLang.toUpperCase();
     });
-
-    // Fade-out → içeriği değiştir → fade-in
-    document.querySelectorAll('[data-tr]').forEach(element => element.classList.add('fade-out'));
-
+    
+    // Fade-out animasyonu: Tüm çevrilebilir elementleri fade-out yap
+    document.querySelectorAll('[data-tr]').forEach(element => {
+        if (!element.closest('.btn') || element.tagName.toLowerCase() === 'span') {
+            element.classList.add('fade-out');
+        }
+    });
+    
+    // Fade-out sonrası içeriği değiştir ve fade-in yap
     setTimeout(() => {
         document.querySelectorAll('[data-tr]').forEach(element => {
-            element.textContent = element.getAttribute(`data-${currentLang}`);
-            element.classList.remove('fade-out');
-            element.classList.add('fade-in');
+            if (!element.closest('.btn') || element.tagName.toLowerCase() === 'span') {
+                element.textContent = element.getAttribute(`data-${currentLang}`);
+                element.classList.remove('fade-out');
+                element.classList.add('fade-in');
+            }
         });
+        
+        // Fade-in animasyonunu başlat
         setTimeout(() => {
-            document.querySelectorAll('[data-tr]').forEach(element => element.classList.remove('fade-in'));
+            document.querySelectorAll('[data-tr]').forEach(element => {
+                element.classList.remove('fade-in');
+            });
         }, 300);
     }, 150);
-
+    
+    // HTML lang attribute'unu güncelle
     document.documentElement.lang = currentLang;
 }
 
-// Navbar: kaydırınca alt çizgi
+// Navbar görünümü (scroll + tema)
 const navbar = document.querySelector('.navbar');
 function updateNavbarAppearance() {
     if (!navbar) return;
-    navbar.classList.toggle('scrolled', window.scrollY > 8);
+    if (window.scrollY > 50) {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        navbar.style.background = isDark ? 'rgba(17, 24, 39, 0.85)' : 'rgba(255, 255, 255, 0.98)';
+        navbar.style.boxShadow = isDark ? '0 2px 10px rgba(0, 0, 0, 0.4)' : '0 2px 10px rgba(0, 0, 0, 0.1)';
+    } else {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        navbar.style.background = isDark ? 'rgba(17, 24, 39, 0.7)' : 'rgba(255, 255, 255, 0.95)';
+        navbar.style.boxShadow = 'none';
+    }
 }
-window.addEventListener('scroll', updateNavbarAppearance, { passive: true });
-updateNavbarAppearance();
+window.addEventListener('scroll', updateNavbarAppearance);
 
-// Smooth scroll — hedef bölüm navbar'ın hemen altına hizalanır
-const getScrollOffset = () => navbar ? navbar.offsetHeight : 64;
+// Hero kod ikonu: profil resminin etrafında yörüngede döner — aşağı kaydır = saat yönü, yukarı = tersi
+const heroBadge = document.querySelector('.hero-avatar-badge');
+function updateHeroBadgeOrbit() {
+    if (!heroBadge) return;
+    var deg = window.scrollY * 0.4;
+    heroBadge.style.setProperty('--orbit-angle', deg + 'deg');
+}
+window.addEventListener('scroll', updateHeroBadgeOrbit);
+updateHeroBadgeOrbit();
+
+// Smooth scroll için — tüm bölümler (Eğitim, Deneyim, vb.) aynı üst boşlukla hizalanır
+// Mobilde navbar 70px; başlık hemen navbar altında
+// Desktop'ta biraz DAHA FAZLA kaydırma için offset'i küçülttük (daha aşağı iner)
+const getScrollOffset = () => window.matchMedia('(max-width: 768px)').matches ? 36 : 48;
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        e.preventDefault();
         const href = this.getAttribute('href');
         if (href === '#') return;
         const target = document.querySelector(href);
-        if (!target) return;
-        e.preventDefault();
-        const y = href === '#hakkimda' ? 0 : target.getBoundingClientRect().top + window.pageYOffset - getScrollOffset();
-        window.scrollTo({ top: y, behavior: 'smooth' });
-    });
-});
-
-// Typewriter — isim
-document.addEventListener('DOMContentLoaded', () => {
-    const tw = document.querySelector('.typewriter');
-    if (!tw) return;
-    const fullText = tw.getAttribute('data-text') || tw.textContent.trim();
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        tw.classList.add('done');
-        return;
-    }
-    tw.textContent = '';
-    let i = 0;
-    const baseSpeed = 90;
-
-    const type = () => {
-        tw.textContent = fullText.slice(0, i);
-        i += 1;
-        if (i <= fullText.length) {
-            setTimeout(type, Math.max(40, baseSpeed + (Math.random() * 60 - 30)));
-        } else {
-            setTimeout(() => tw.classList.add('done'), 2000);
+        if (target) {
+            // Nav'dan tıklanınca hedef bölüm hemen visible olsun (mobilde IntersectionObserver gecikebiliyor)
+            target.classList.add('visible');
+            const y = target.getBoundingClientRect().top + window.pageYOffset;
+            window.scrollTo({ top: y - getScrollOffset(), behavior: 'smooth' });
         }
-    };
-    setTimeout(type, 500);
+    });
 });
 
-// Görünme animasyonu
+// Skill kartları için hover efekti
+document.querySelectorAll('.skill-card').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-10px)';
+    });
+
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0)';
+    });
+});
+
+// Sayfa yüklendiğinde animasyon
 document.addEventListener('DOMContentLoaded', () => {
-    const items = document.querySelectorAll('.reveal');
-    if (!('IntersectionObserver' in window)) {
-        items.forEach(el => el.classList.add('in'));
-        return;
+    const heroContent = document.querySelector('.hero-content') || document.querySelector('.hero-modern .hero-grid');
+    if (heroContent) {
+        heroContent.style.opacity = '0';
+        heroContent.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+            heroContent.style.transition = 'all 0.8s ease-out';
+            heroContent.style.opacity = '1';
+            heroContent.style.transform = 'translateY(0)';
+        }, 200);
     }
-    const io = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('in');
-                io.unobserve(entry.target);
-            }
-        });
-    }, { rootMargin: '0px 0px -40px 0px', threshold: 0.1 });
 
-    // Aynı kapsayıcıdaki kardeş öğeler sırayla gelsin
-    items.forEach(el => {
-        const siblings = Array.from(el.parentElement.children).filter(c => c.classList.contains('reveal'));
-        el.style.transitionDelay = `${Math.min(siblings.indexOf(el), 5) * 70}ms`;
-        io.observe(el);
+    // Typewriter effect for name — "Merhaba ben" göründükten sonra başlasın (0.6s)
+    const tw = document.querySelector('.typewriter');
+    if (tw) {
+        const fullText = tw.getAttribute('data-text') || tw.textContent.trim();
+        tw.textContent = '';
+        let i = 0;
+        const baseSpeed = 110; // ms per char (daha hızlı yazım)
+
+        const type = () => {
+            if (i <= fullText.length) {
+                tw.textContent = fullText.slice(0, i);
+                i += 1;
+                if (i <= fullText.length) {
+                    const jitter = Math.max(40, baseSpeed + (Math.random() * 60 - 30));
+                    setTimeout(type, jitter);
+                } else {
+                    tw.classList.add('typed');
+                    // Yazı tamamlandı; 2 saniye sonra imleci gizle
+                    setTimeout(() => {
+                        tw.classList.add('done');
+                    }, 2000);
+                }
+            }
+        };
+        setTimeout(type, 600);
+    }
+    // Eğitim bölümü görününce timeline animasyonu
+    const educationSection = document.getElementById('egitim');
+    if (educationSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('education-visible');
+                }
+            });
+        }, { rootMargin: '0px 0px -80px 0px', threshold: 0.2 });
+        observer.observe(educationSection);
+    }
+    // Tema başlangıcı: aşağıdaki global tema yöneticisi early reflect yapıyor
+});
+
+// Projeler: yatay kaydırma (sadece oklar; sürükle-bırak devre dışı)
+document.addEventListener('DOMContentLoaded', () => {
+    const track = document.querySelector('.projects-track');
+    const leftBtn = document.querySelector('.projects-arrow.left');
+    const rightBtn = document.querySelector('.projects-arrow.right');
+    const dotsContainer = document.querySelector('.projects-dots');
+
+    if (!track) return;
+
+    const scrollByAmount = () => Math.min(track.clientWidth * 0.9, 600);
+
+    const updateArrowVisibility = () => {
+        if (!leftBtn || !rightBtn) return;
+        // Mobilde oklar daima gizli kalsın (CSS'le uyumlu)
+        if (window.matchMedia && window.matchMedia('(max-width: 768px)').matches) {
+            leftBtn.style.display = 'none';
+            rightBtn.style.display = 'none';
+            return;
+        }
+        const maxScroll = track.scrollWidth - track.clientWidth - 1; // tolerans
+        const atStart = track.scrollLeft <= 0;
+        const atEnd = track.scrollLeft >= maxScroll;
+        leftBtn.style.display = atStart ? 'none' : 'flex';
+        rightBtn.style.display = atEnd ? 'none' : 'flex';
+    };
+
+    leftBtn?.addEventListener('click', () => {
+        track.scrollBy({ left: -scrollByAmount(), behavior: 'smooth' });
+        updateArrowVisibility();
+    });
+    rightBtn?.addEventListener('click', () => {
+        track.scrollBy({ left: scrollByAmount(), behavior: 'smooth' });
+        updateArrowVisibility();
+    });
+
+    // Mobil dots/pagination
+    if (dotsContainer) {
+        const cards = Array.from(track.querySelectorAll('.project-card'));
+        // Dots oluştur
+        dotsContainer.innerHTML = '';
+        cards.forEach((_, idx) => {
+            const dot = document.createElement('button');
+            dot.className = 'projects-dot' + (idx === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', `Kart ${idx + 1}`);
+            dot.setAttribute('role', 'tab');
+            dot.addEventListener('click', () => {
+                const target = cards[idx];
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+                }
+            });
+            dotsContainer.appendChild(dot);
+        });
+
+        const updateActiveDot = () => {
+            const scrollLeft = track.scrollLeft;
+            // En yakın kartın indeksini bul
+            let nearestIdx = 0;
+            let minDelta = Number.POSITIVE_INFINITY;
+            cards.forEach((card, idx) => {
+                const delta = Math.abs(card.offsetLeft - scrollLeft);
+                if (delta < minDelta) { minDelta = delta; nearestIdx = idx; }
+            });
+            const dots = Array.from(dotsContainer.querySelectorAll('.projects-dot'));
+            dots.forEach((d, i) => d.classList.toggle('active', i === nearestIdx));
+        };
+
+        track.addEventListener('scroll', () => {
+            // Scroll sonunda aktif noktayı güncelle
+            window.requestAnimationFrame(updateActiveDot);
+            window.requestAnimationFrame(updateArrowVisibility);
+        }, { passive: true });
+
+        // İlk durum
+        updateActiveDot();
+    }
+
+    // İlk açılışta ok görünürlüğünü ayarla ve resize'da güncelle
+    updateArrowVisibility();
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(updateArrowVisibility, 150);
     });
 });
 
-// Projeler: mobil karusel noktaları
+// Projeler: filtreleme + tıklayınca kartı çevir (flip)
 document.addEventListener('DOMContentLoaded', () => {
-    const track = document.querySelector('.projects-grid');
-    const dotsContainer = document.querySelector('.projects-dots');
-    if (!track || !dotsContainer) return;
+    const section = document.querySelector('.projects-modern');
+    if (!section) return;
+    const track = section.querySelector('.projects-track');
+    const cards = track ? Array.from(track.querySelectorAll('.project-card')) : [];
+    const filterBtns = section.querySelectorAll('.projects-filter-btn');
 
-    // Kartlar mobilde CSS "order" ile sıralanıyor; noktalar da aynı sırayı izlesin
-    const orderOf = (card) => parseInt(card.style.getPropertyValue('--order'), 10) || 0;
-    const cards = Array.from(track.querySelectorAll('.project-card')).sort((a, b) => orderOf(a) - orderOf(b));
-    const dots = cards.map((card, idx) => {
-        const dot = document.createElement('button');
-        dot.type = 'button';
-        dot.className = 'projects-dot' + (idx === 0 ? ' active' : '');
-        dot.setAttribute('aria-label', `Proje ${idx + 1}`);
-        dot.addEventListener('click', () => {
-            track.scrollTo({ left: card.offsetLeft - 16, behavior: 'smooth' });
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const filter = btn.getAttribute('data-filter');
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            cards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                const show = filter === 'all' || category === filter;
+                card.style.display = show ? '' : 'none';
+            });
         });
-        dotsContainer.appendChild(dot);
-        return dot;
     });
 
-    const updateActiveDot = () => {
-        const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
-        let nearest = 0;
-        let minDelta = Infinity;
-        cards.forEach((card, idx) => {
-            const delta = Math.abs(card.offsetLeft - 16 - track.scrollLeft);
-            if (delta < minDelta) { minDelta = delta; nearest = idx; }
-        });
-        if (atEnd) nearest = cards.length - 1;
-        dots.forEach((d, i) => d.classList.toggle('active', i === nearest));
-    };
+    const isMobile = () => window.matchMedia('(max-width: 639px)').matches;
+    cards.forEach(card => {
+        const inner = card.querySelector('.project-card-inner');
+        const front = card.querySelector('.project-card-front');
+        const back = card.querySelector('.project-card-back');
+        if (!inner || !front || !back) return;
 
-    track.addEventListener('scroll', () => requestAnimationFrame(updateActiveDot), { passive: true });
+        front.addEventListener('click', () => {
+            if (isMobile()) return;
+            card.classList.toggle('flipped', true);
+        });
+        back.addEventListener('click', (e) => {
+            if (e.target.closest('a')) return;
+            e.preventDefault();
+            if (isMobile()) return;
+            card.classList.remove('flipped');
+        });
+    });
 });
 
 // Görseller için Lightbox (tam ekran önizleme)
@@ -165,12 +328,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const modal = document.querySelector('.image-modal');
     const modalImg = document.querySelector('.image-modal-content');
     const modalClose = document.querySelector('.image-modal-close');
+    const images = document.querySelectorAll('.project-card .project-image');
+
     if (!modal || !modalImg || !modalClose) return;
 
-    document.querySelectorAll('.project-card .project-image').forEach(img => {
+    images.forEach(img => {
+        if (img.closest('.project-card-front')) return;
+        img.style.cursor = 'zoom-in';
         img.addEventListener('click', () => {
             modalImg.src = img.getAttribute('src');
-            modalImg.alt = img.alt;
             modal.classList.add('open');
             modal.setAttribute('aria-hidden', 'false');
         });
@@ -179,6 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function closeModal() {
         modal.classList.remove('open');
         modal.setAttribute('aria-hidden', 'true');
+        modalImg.src = '';
     }
 
     modal.addEventListener('click', (e) => {
@@ -195,16 +362,15 @@ const storageKey = 'theme-preference';
 const theme = { value: getColorPreference() };
 
 function getColorPreference() {
-    try {
-        const stored = localStorage.getItem(storageKey);
-        if (stored) return stored;
-    } catch (e) {}
+    const stored = localStorage.getItem(storageKey);
+    if (stored) return stored;
     return 'dark';
 }
 
 function setPreference() {
-    try { localStorage.setItem(storageKey, theme.value); } catch (e) {}
+    localStorage.setItem(storageKey, theme.value);
     reflectPreference();
+    updateNavbarAppearance();
 }
 
 function reflectPreference() {
@@ -214,15 +380,22 @@ function reflectPreference() {
     });
 }
 
+function onThemeToggleClick() {
+    theme.value = theme.value === 'light' ? 'dark' : 'light';
+    setPreference();
+}
+
+// early reflect to avoid flash
 reflectPreference();
-document.querySelectorAll('.theme-toggle').forEach(btn => {
-    btn.addEventListener('click', () => {
-        theme.value = theme.value === 'light' ? 'dark' : 'light';
-        setPreference();
+
+window.addEventListener('load', () => {
+    reflectPreference();
+    document.querySelectorAll('.theme-toggle').forEach(btn => {
+        btn.addEventListener('click', onThemeToggleClick);
     });
 });
 
-// Sistem teması değişirse uy
+// sync with system changes
 if (window.matchMedia) {
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', ({ matches: isDark }) => {
         theme.value = isDark ? 'dark' : 'light';
@@ -230,7 +403,37 @@ if (window.matchMedia) {
     });
 }
 
-// Aktif bölüm: viewport ortası hangi section içindeyse o aktif; en üst/en alt öncelikli
+// Scroll Animasyonu için Intersection Observer
+const sections = document.querySelectorAll('section:not(.hero)');
+
+// Mobilde daha toleranslı ayarlar: küçük ekranda rootMargin ve threshold tetiklemeyi engelleyebiliyor
+const isMobile = () => window.matchMedia('(max-width: 768px)').matches;
+const observerOptions = {
+    root: null,
+    rootMargin: isMobile() ? '-60px 0px -60px 0px' : '-110px 0px -110px 0px',
+    threshold: isMobile() ? 0.1 : 0.45
+};
+
+const sectionObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            if (entry.target.id === 'projeler') {
+                const cards = entry.target.querySelectorAll('.project-card');
+                cards.forEach(card => {
+                    card.style.animationDelay = (Math.random() * 0.7).toFixed(2) + 's';
+                });
+            }
+            observer.unobserve(entry.target); // Bir kez görününce gözlemi durdur
+        }
+    });
+}, observerOptions);
+
+sections.forEach(section => {
+    sectionObserver.observe(section);
+});
+
+// Aktif bölüm: viewport merkezi hangi section içindeyse o aktif; en üst/en alt öncelikli
 function updateActiveNavLink() {
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
@@ -239,27 +442,36 @@ function updateActiveNavLink() {
     const docHeight = document.documentElement.scrollHeight;
     let current = '';
 
+    // En alttayken her zaman İletişim (kısa section için viewport ortası Projeler'de kalabiliyor)
     if (scrollBottom >= docHeight - 60) {
         current = 'iletisim';
     } else if (window.pageYOffset < 80) {
         current = 'hakkimda';
     } else {
-        for (const section of sections) {
-            const rect = section.getBoundingClientRect();
+        for (let i = 0; i < sections.length; i++) {
+            const rect = sections[i].getBoundingClientRect();
             if (rect.top <= viewportCenter && rect.bottom >= viewportCenter) {
-                current = section.id;
+                current = sections[i].getAttribute('id') || '';
                 break;
             }
         }
+        if (!current) current = sections[0] ? (sections[0].getAttribute('id') || 'hakkimda') : 'hakkimda';
     }
 
+    const currentNorm = (current || '').trim();
     navLinks.forEach(link => {
-        link.classList.toggle('active', link.getAttribute('href').slice(1) === current);
+        const id = (link.getAttribute('href') || '').replace(/^#/, '').trim();
+        link.classList.toggle('active', id === currentNorm);
     });
 }
 
-window.addEventListener('scroll', updateActiveNavLink, { passive: true });
-updateActiveNavLink();
+window.addEventListener('scroll', updateActiveNavLink);
+// Sayfa ilk açıldığında Hakkımda aktif olsun
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateActiveNavLink);
+} else {
+    updateActiveNavLink();
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     const terminal = document.querySelector('.terminal');
@@ -741,7 +953,7 @@ I'm mainly interested in web development, databases, and artificial intelligence
         },
         cv: () => {
             const link = document.createElement('a');
-            link.href = 'assets/docs/cv.pdf';
+            link.href = '../assets/docs/cv.pdf';
             link.download = 'ibrahim_mert_surme_cv.pdf';
             link.click();
             return terminalTexts[currentLang].cvDownloading;
@@ -757,14 +969,17 @@ I'm mainly interested in web development, databases, and artificial intelligence
 
     function openTerminal() {
         if (terminal.classList.contains('active')) return;
-        // Terminal ekranın ortasında açılır (boyutlar CSS ile aynı)
-        if (terminalWrapper) {
-            var isSmall = window.matchMedia('(max-width: 640px)').matches;
-            var tw = isSmall ? window.innerWidth - 24 : 660;
-            var th = isSmall ? window.innerHeight * 0.6 : 440;
-            var gap = 12;
-            var left = Math.max(gap, (window.innerWidth - tw) / 2);
-            var top = Math.max(gap, (window.innerHeight - th) / 2);
+        var trigger = document.querySelector('.hero-terminal-trigger');
+        if (trigger && terminalWrapper) {
+            var r = trigger.getBoundingClientRect();
+            var tw = 660;
+            var th = 440;
+            var gap = 10;
+            var left = r.left - tw - gap;
+            var top = r.bottom + gap;
+            if (left < gap) left = gap;
+            if (top + th > window.innerHeight - gap) top = window.innerHeight - th - gap;
+            if (top < gap) top = gap;
             terminalWrapper.style.left = left + 'px';
             terminalWrapper.style.top = top + 'px';
             terminalWrapper.style.right = 'auto';
