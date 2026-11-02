@@ -290,8 +290,12 @@ Genellikle web geliştirme, veritabanları ve yapay zeka ile ilgileniyorum ve bu
             education: `Eğitim:
 • İstanbul Teknik Üniversitesi
   - Bilgisayar Mühendisliği
-  - GNO: 3.22/4.00
-  - 2022 - Devam Ediyor`,
+  - GNO: 3.16/4.00
+  - 2022 - Devam Ediyor
+
+• Batman Fen Lisesi
+  - GNO: 97.9/100
+  - 2017 - 2021`,
             experience: `Deneyim:
 • Yazılım Mühendisliği Stajyeri — Intertech Bilgi Teknolojileri
   - Ağustos – Eylül 2025
@@ -307,11 +311,24 @@ Genellikle web geliştirme, veritabanları ve yapay zeka ile ilgileniyorum ve bu
             projects: `Projelerim:
 1. YemekMetre - İTÜ Yemek Takip Sistemi
    - İTÜ öğrencileri için geliştirilmiş, yemek menüsü takip ve değerlendirme platformu
-   - Demo: <a href="https://ituyemekmetre.com" target="_blank" style="color: #00ff9d; text-decoration: none;" onmouseover="this.style.color='#ff9d00'" onmouseout="this.style.color='#00ff9d'">ituyemekmetre.com</a>
+   - Site: <a href="https://ituyemekmetre.com" target="_blank" style="color: #00ff9d; text-decoration: none;" onmouseover="this.style.color='#ff9d00'" onmouseout="this.style.color='#00ff9d'">ituyemekmetre.com</a>
 
 2. Restoran Yönetim Sistemi
    - Restoranlar için yönetim ve sipariş takibi yapabilecekleri bir platform
-   - GitHub: <a href="https://github.com/imSurme/FDManagementSystem" target="_blank" style="color: #00ff9d; text-decoration: none;" onmouseover="this.style.color='#ff9d00'" onmouseout="this.style.color='#00ff9d'">github.com/imSurme/FDManagementSystem</a>`,
+   - GitHub: <a href="https://github.com/imSurme/FDManagementSystem" target="_blank" style="color: #00ff9d; text-decoration: none;" onmouseover="this.style.color='#ff9d00'" onmouseout="this.style.color='#00ff9d'">github.com/imSurme/FDManagementSystem</a>
+
+3. InterChat - Akıllı Bankacılık Asistanı
+   - Yapay zeka destekli, güvenli bankacılık asistanı
+   - GitHub: <a href="https://github.com/imSurme/interchat-banking-assistant" target="_blank" style="color: #00ff9d; text-decoration: none;" onmouseover="this.style.color='#ff9d00'" onmouseout="this.style.color='#00ff9d'">github.com/imSurme/interchat-banking-assistant</a>
+
+4. Tactic Arena
+   - Kart tabanlı, gerçek zamanlı 5'e 5 futbol oyunu
+   - Oyna: <a href="https://tacticarena.app" target="_blank" style="color: #00ff9d; text-decoration: none;" onmouseover="this.style.color='#ff9d00'" onmouseout="this.style.color='#00ff9d'">tacticarena.app</a>
+
+5. Modern Shopping App
+   - Demo alışveriş web uygulaması
+   - Demo: <a href="https://imsurme.github.io/shopping-app/" target="_blank" style="color: #00ff9d; text-decoration: none;" onmouseover="this.style.color='#ff9d00'" onmouseout="this.style.color='#00ff9d'">imsurme.github.io/shopping-app</a>
+   - GitHub: <a href="https://github.com/imSurme/shopping-app" target="_blank" style="color: #00ff9d; text-decoration: none;" onmouseover="this.style.color='#ff9d00'" onmouseout="this.style.color='#00ff9d'">github.com/imSurme/shopping-app</a>`,
             contact: `İletişim Bilgileri:
 • Email: <a href="mailto:mrtsrm27@gmail.com" target="_blank" style="color: #00ff9d; text-decoration: none;" onmouseover="this.style.color='#ff9d00'" onmouseout="this.style.color='#00ff9d'">mrtsrm27@gmail.com</a>
 • GitHub: <a href="https://github.com/imSurme" target="_blank" style="color: #00ff9d; text-decoration: none;" onmouseover="this.style.color='#ff9d00'" onmouseout="this.style.color='#00ff9d'">github.com/imSurme</a>
@@ -338,8 +355,12 @@ I'm mainly interested in web development, databases, and artificial intelligence
             education: `Education:
 • Istanbul Technical University
   - Computer Engineering
-  - GPA: 3.22/4.00
-  - 2022 - Present`,
+  - GPA: 3.16/4.00
+  - 2022 - Present
+
+• Batman Science High School
+  - GPA: 97.9/100
+  - 2017 - 2021`,
             experience: `Experience:
 • Software Engineer Intern — Intertech Information Technologies
   - Aug – Sep 2025
@@ -355,11 +376,24 @@ I'm mainly interested in web development, databases, and artificial intelligence
             projects: `My Projects:
 1. YemekMetre - ITU Food Tracking System
    - A food menu tracking and rating platform developed for ITU students
-   - Demo: <a href="https://ituyemekmetre.com" target="_blank" style="color: #00ff9d; text-decoration: none;" onmouseover="this.style.color='#ff9d00'" onmouseout="this.style.color='#00ff9d'">ituyemekmetre.com</a>
+   - Site: <a href="https://ituyemekmetre.com" target="_blank" style="color: #00ff9d; text-decoration: none;" onmouseover="this.style.color='#ff9d00'" onmouseout="this.style.color='#00ff9d'">ituyemekmetre.com</a>
 
 2. Restaurant Management System
    - A platform for restaurants to manage and track orders
-   - GitHub: <a href="https://github.com/imSurme/FDManagementSystem" target="_blank" style="color: #00ff9d; text-decoration: none;" onmouseover="this.style.color='#ff9d00'" onmouseout="this.style.color='#00ff9d'">github.com/imSurme/FDManagementSystem</a>`,
+   - GitHub: <a href="https://github.com/imSurme/FDManagementSystem" target="_blank" style="color: #00ff9d; text-decoration: none;" onmouseover="this.style.color='#ff9d00'" onmouseout="this.style.color='#00ff9d'">github.com/imSurme/FDManagementSystem</a>
+
+3. InterChat - Smart Banking Assistant
+   - AI-powered, secure banking assistant
+   - GitHub: <a href="https://github.com/imSurme/interchat-banking-assistant" target="_blank" style="color: #00ff9d; text-decoration: none;" onmouseover="this.style.color='#ff9d00'" onmouseout="this.style.color='#00ff9d'">github.com/imSurme/interchat-banking-assistant</a>
+
+4. Tactic Arena
+   - Card-based, real-time 5v5 football game
+   - Play: <a href="https://tacticarena.app" target="_blank" style="color: #00ff9d; text-decoration: none;" onmouseover="this.style.color='#ff9d00'" onmouseout="this.style.color='#00ff9d'">tacticarena.app</a>
+
+5. Modern Shopping App
+   - Demo shopping web app
+   - Demo: <a href="https://imsurme.github.io/shopping-app/" target="_blank" style="color: #00ff9d; text-decoration: none;" onmouseover="this.style.color='#ff9d00'" onmouseout="this.style.color='#00ff9d'">imsurme.github.io/shopping-app</a>
+   - GitHub: <a href="https://github.com/imSurme/shopping-app" target="_blank" style="color: #00ff9d; text-decoration: none;" onmouseover="this.style.color='#ff9d00'" onmouseout="this.style.color='#00ff9d'">github.com/imSurme/shopping-app</a>`,
             contact: `Contact Information:
 • Email: <a href="mailto:mrtsrm27@gmail.com" target="_blank" style="color: #00ff9d; text-decoration: none;" onmouseover="this.style.color='#ff9d00'" onmouseout="this.style.color='#00ff9d'">mrtsrm27@gmail.com</a>
 • GitHub: <a href="https://github.com/imSurme" target="_blank" style="color: #00ff9d; text-decoration: none;" onmouseover="this.style.color='#ff9d00'" onmouseout="this.style.color='#00ff9d'">github.com/imSurme</a>

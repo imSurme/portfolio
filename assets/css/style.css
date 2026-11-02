@@ -985,6 +985,10 @@ html:not(.js) .edu-line-arrow {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
 }
 
+.project-shot--quad img {
+    max-width: calc((100% - 30px) / 4);
+}
+
 .project-card:hover .project-shot--triple img {
     transform: translateY(-3px);
 }
